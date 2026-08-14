@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NBOS — A Nimje Group Venture. Custom software, 3D web experiences, AI-powered marketing, business automation, and ERP systems for serious businesses." />
+  <meta name="keywords" content="NBOS, Nimje Group, custom software, 3D web, AI marketing, ERP, business automation" />
+  <title>NBOS — A Nimje Group Venture</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css?v=25" />
+  
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <!-- ============================================================
+       CINEMATIC SPLASH SCREEN
+  ============================================================ -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-content">
+      <span class="splash-name">NBOS</span>
+      <span class="splash-sub">A Nimje Group Venture</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       GLOBAL NAVIGATION
+  ============================================================ -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="navbar-inner container">
+      <a href="#hero" class="navbar-brand" aria-label="NBOS Home">
+        <span class="brand-name">NBOS</span>
+        <span class="brand-sub">A Nimje Group Venture</span>
+      </a>
+
+      <nav class="navbar-nav" aria-label="Primary navigation">
+        <a href="#showcase" class="nav-link">Services</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="navbar-actions">
+        <button class="btn btn-ghost btn-sm" id="nav-logout" style="display: none;">Log Out</button>
+        <a href="#pricing" class="btn btn-primary btn-sm" id="nav-cta">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <nav>
+        <a href="#showcase" class="mobile-nav-link">Services</a>
+        <a href="#pricing" class="mobile-nav-link">Pricing</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <a href="#pricing" class="btn btn-primary mobile-cta">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="app-content" style="display: none;">
+  <main>
+
+    <!-- ============================================================
+         SCREEN 1 — HERO
+    ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner container">
+
+        <!-- LEFT: Copy & CTA -->
+        <div class="hero-content" data-reveal>
+          <div class="hero-eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Technology Infrastructure for Business Growth</span>
+          </div>
+
+          <h1 class="hero-headline" id="hero-heading">
+            Operating Your Business Growth Through Smart Tech.
+          </h1>
+
+          <p class="hero-body">
+            NBOS architects and deploys intelligent technology systems — from custom software and 3D web experiences to AI-powered marketing engines, business automation, and full-stack ERP infrastructure.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#pricing" class="btn btn-primary btn-lg" id="hero-cta">
+              Start Your Project
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="#showcase" class="btn btn-ghost btn-lg">
+              Explore Capabilities
+            </a>
+          </div>
+
+          <div class="hero-trust">
+            <span class="trust-item">
+              <span class="trust-dot"></span>
+              Enterprise-Grade Systems
+            </span>
+            <span class="trust-item">
+              <span class="trust-dot"></span>
+              AI-Integrated Workflows
+            </span>
+            <span class="trust-item">
+              <span class="trust-dot"></span>
+              Production-Ready Delivery
+            </span>
+          </div>
+        </div>
+
+        <!-- RIGHT: Three.js WebGL Sphere -->
+        <div class="hero-canvas-wrap" id="hero-canvas-wrap" aria-hidden="true">
+          <canvas id="webgl-canvas"></canvas>
+          <div class="webgl-fallback" id="webgl-fallback" aria-hidden="true">
+            <div class="fallback-sphere">
+              <div class="fallback-ring r1"></div>
+              <div class="fallback-ring r2"></div>
+              <div class="fallback-ring r3"></div>
+              <div class="fallback-core"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Stats Banner -->
+      <div class="hero-stats" data-reveal>
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-number">80<span class="stat-plus">+</span></span>
+              <span class="stat-label">Projects Engineered</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat-item">
+              <span class="stat-number">35<span class="stat-plus">+</span></span>
+              <span class="stat-label">Businesses Automated</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat-item">
+              <span class="stat-number">50<span class="stat-plus">+</span></span>
+              <span class="stat-label">AI Campaigns Deployed</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat-item">
+              <span class="stat-number">72<span class="stat-unit">hr</span></span>
+              <span class="stat-label">Deployment Speed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCREEN 2 — SHOWCASE
+    ============================================================ -->
+    <section class="showcase" id="showcase" aria-labelledby="showcase-heading">
+      <div class="container">
+
+        <div class="section-header" data-reveal>
+          <div class="section-eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Core Capabilities</span>
+          </div>
+          <h2 class="section-title" id="showcase-heading">Technology Systems We Build</h2>
+          <p class="section-body">
+            Each NBOS engagement delivers a purpose-built technology system — engineered for operational performance and long-term business value.
+          </p>
+        </div>
+
+        <div class="showcase-grid">
+
+          <!-- Card 1: Custom 3D Web Apps -->
+          <article class="showcase-card" data-reveal data-delay="0" aria-labelledby="card-1-title">
+            <div class="card-inner">
+              <div class="card-meta-top">
+                <span class="card-index">01</span>
+                <span class="card-tag">WebGL / 3D</span>
+              </div>
+
+              <!-- Hardware Mockup: Laptop Frame -->
+              <div class="mockup-frame mockup-laptop" aria-hidden="true">
+                <div class="laptop-body">
+                  <div class="laptop-screen">
+                    <div class="screen-content screen-3d">
+                      <div class="screen-topbar">
+                        <span class="topbar-dots"><i></i><i></i><i></i></span>
+                        <span class="topbar-url">nbos.studio / 3d-experience</span>
+                      </div>
+                      <div class="screen-3d-visual">
+                        <div class="vis-sphere-wrap">
+                          <div class="vis-sphere"></div>
+                          <div class="vis-orbit o1"></div>
+                          <div class="vis-orbit o2"></div>
+                        </div>
+                        <div class="vis-metrics">
+                          <div class="vis-metric"><span class="vm-label">FPS</span><span class="vm-val">60</span></div>
+                          <div class="vis-metric"><span class="vm-label">Verts</span><span class="vm-val">18k</span></div>
+                          <div class="vis-metric"><span class="vm-label">Draw</span><span class="vm-val">1ms</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="laptop-hinge"></div>
+                  <div class="laptop-base"></div>
+                </div>
+              </div>
+
+              <div class="card-content">
+                <h3 class="card-title" id="card-1-title">Custom 3D Web Apps</h3>
+                <p class="card-desc">
+                  Immersive WebGL-powered web experiences with interactive product visualization, real-time 3D interfaces, and high-impact digital environments.
+                </p>
+                <div class="card-capabilities">
+                  <span class="cap-tag">WebGL / Three.js</span>
+                  <span class="cap-tag">Interactive 3D</span>
+                  <span class="cap-tag">Product Viz</span>
+                  <span class="cap-tag">GLSL Shaders</span>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <a href="#pricing" class="card-link" aria-label="Inquire about Custom 3D Web Apps">
+                  Inquire <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: AI Marketing Campaigns -->
+          <article class="showcase-card card-accent" data-reveal data-delay="1" aria-labelledby="card-2-title">
+            <div class="card-inner">
+              <div class="card-meta-top">
+                <span class="card-index">02</span>
+                <span class="card-tag">AI / Automation</span>
+              </div>
+
+              <!-- Hardware Mockup: Mobile + Dashboard -->
+              <div class="mockup-frame mockup-mobile-pair" aria-hidden="true">
+                <div class="mobile-device md-back">
+                  <div class="mobile-screen">
+                    <div class="ms-header">Campaign AI</div>
+                    <div class="ms-chart">
+                      <div class="chart-bar" style="--h:65%"></div>
+                      <div class="chart-bar" style="--h:80%"></div>
+                      <div class="chart-bar" style="--h:45%"></div>
+                      <div class="chart-bar" style="--h:90%"></div>
+                      <div class="chart-bar" style="--h:72%"></div>
+                      <div class="chart-bar" style="--h:88%"></div>
+                    </div>
+                    <div class="ms-row"><span>Impressions</span><span class="ms-val accent-val">2.4M</span></div>
+                    <div class="ms-row"><span>Conv. Rate</span><span class="ms-val accent-val">4.7%</span></div>
+                    <div class="ms-row"><span>ROAS</span><span class="ms-val accent-val">8.2×</span></div>
+                  </div>
+                </div>
+                <div class="mobile-device md-front">
+                  <div class="mobile-screen">
+                    <div class="ms-header">AI Content</div>
+                    <div class="ai-content-preview">
+                      <div class="acp-line acp-title"></div>
+                      <div class="acp-line acp-body"></div>
+                      <div class="acp-line acp-body short"></div>
+                      <div class="acp-tag-row">
+                        <div class="acp-tag"></div>
+                        <div class="acp-tag"></div>
+                      </div>
+                      <div class="acp-cta"></div>
+                    </div>
+                    <div class="ai-badge">
+                      <span class="ai-dot pulse"></span>
+                      <span>AI Generating</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-content">
+                <h3 class="card-title" id="card-2-title">AI Marketing Campaigns</h3>
+                <p class="card-desc">
+                  AI-assisted content systems, campaign automation, lead-generation workflows, and performance-oriented creative pipelines.
+                </p>
+                <div class="card-capabilities">
+                  <span class="cap-tag">LLM Content</span>
+                  <span class="cap-tag">Campaign Automation</span>
+                  <span class="cap-tag">Lead Funnels</span>
+                  <span class="cap-tag">Analytics</span>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <a href="#pricing" class="card-link" aria-label="Inquire about AI Marketing Campaigns">
+                  Inquire <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: UI/UX Design & Systems -->
+          <article class="showcase-card" data-reveal data-delay="2" aria-labelledby="card-3-title">
+            <div class="card-inner">
+              <div class="card-meta-top">
+                <span class="card-index">03</span>
+                <span class="card-tag">UI/UX Design</span>
+              </div>
+
+              <!-- Hardware Mockup: Laptop UI/UX Studio -->
+              <div class="mockup-frame mockup-laptop" aria-hidden="true">
+                <div class="laptop-body">
+                  <div class="laptop-screen">
+                    <div class="screen-content screen-uiux">
+                      <div class="screen-topbar">
+                        <span class="topbar-dots"><i></i><i></i><i></i></span>
+                        <span class="topbar-url">design.nbos.app / ui-ux-studio</span>
+                      </div>
+                      <div class="uiux-studio-layout">
+                        <div class="uiux-toolbar">
+                          <span class="uiux-tool active">❖ Components</span>
+                          <span class="uiux-tool">🎨 Tokens</span>
+                          <span class="uiux-tool">📐 Grid</span>
+                        </div>
+                        <div class="uiux-workspace">
+                          <div class="uiux-side-panel">
+                            <div class="uiux-token t1"></div>
+                            <div class="uiux-token t2"></div>
+                            <div class="uiux-token t3"></div>
+                          </div>
+                          <div class="uiux-canvas-area">
+                            <div class="uiux-artboard">
+                              <div class="artboard-header"></div>
+                              <div class="artboard-hero-box"></div>
+                              <div class="artboard-cards-row">
+                                <div></div><div></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="laptop-hinge"></div>
+                  <div class="laptop-base"></div>
+                </div>
+              </div>
+
+              <div class="card-content">
+                <h3 class="card-title" id="card-3-title">UI/UX Design & Systems</h3>
+                <p class="card-desc">
+                  Enterprise UI/UX design systems, high-converting product user experiences, interactive prototypes, and precise frontend design tokens.
+                </p>
+                <div class="card-capabilities">
+                  <span class="cap-tag">UI/UX Engineering</span>
+                  <span class="cap-tag">Design Systems</span>
+                  <span class="cap-tag">Prototyping</span>
+                  <span class="cap-tag">Design Tokens</span>
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <a href="#pricing" class="card-link" aria-label="Inquire about UI/UX Design & Systems">
+                  Inquire <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCREEN 3 — PRICING & INQUIRY FORM
+    ============================================================ -->
+    <section class="pricing" id="pricing" aria-labelledby="pricing-heading">
+      <div class="container">
+
+        <div class="section-header" data-reveal>
+          <div class="section-eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Packages</span>
+          </div>
+          <h2 class="section-title" id="pricing-heading">Select Your Technology Package</h2>
+          <p class="section-body">
+            Two structured engagement packages designed to match different operational scales and technology requirements.
+          </p>
+        </div>
+
+        <!-- Segmented Tab Nav -->
+        <div class="pricing-tabs-wrapper" data-reveal>
+          <div class="pricing-tabs" role="tablist" aria-label="Pricing category tabs">
+            <button class="pricing-tab active" role="tab" id="tab-web" aria-selected="true" aria-controls="panel-web">
+              <span class="tab-icon">🌐</span> Website &amp; Systems
+            </button>
+            <button class="pricing-tab" role="tab" id="tab-ai" aria-selected="false" aria-controls="panel-ai">
+              <span class="tab-icon">🤖</span> AI &amp; Automation
+            </button>
+            <button class="pricing-tab" role="tab" id="tab-maint" aria-selected="false" aria-controls="panel-maint">
+              <span class="tab-icon">🛠️</span> Maintenance &amp; Care
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab Panel 1: Website & Systems (3 Cards) -->
+        <div class="tab-panel active" id="panel-web" role="tabpanel" aria-labelledby="tab-web" data-reveal>
+          <div class="pricing-grid pricing-grid-4">
+            <!-- Web Card 1: Standard -->
+            <div class="pricing-card pricing-card-premium" id="plan-standard" aria-labelledby="plan-standard-title">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">Standard</div>
+                  <h3 class="pricing-name" id="plan-standard-title">NBOS Standard</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">24,999</span>
+                  </div>
+                  <p class="pricing-caption">Essential online presence for small businesses &amp; startups on a budget.</p>
+                </div>
+                <ul class="pricing-features" aria-label="Standard plan features">
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Basic Multi-Page / Landing Page Website</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> No-Code / Template-Based Architecture</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Standard UI/UX Layout</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Mobile &amp; Tablet Responsive Implementation</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Standard Deployment &amp; Hosting Setup</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> 7-Day Post-Launch Support</li>
+                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> Custom UI/UX Engineering</li>
+                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> Custom Web Application Dev</li>
+                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> 3D / WebGL Integration</li>
+                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> AI Chatbot &amp; BI Dashboard</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select NBOS Standard plan">Select Standard</a>
+                <div class="premium-glow-border" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- Web Card 2: Growth (Featured) -->
+            <div class="pricing-card pricing-card-premium pricing-card-featured" id="plan-growth" aria-labelledby="plan-growth-title">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge-row">
+                    <span class="most-selling-badge">🔥 MOST SELLING</span>
+                    <span class="pricing-badge pricing-badge-premium">Growth</span>
+                  </div>
+                  <h3 class="pricing-name" id="plan-growth-title">NBOS Growth</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">44,999</span>
+                  </div>
+                  <p class="pricing-caption">Full-featured custom web applications for scaling companies.</p>
+                </div>
+                <ul class="pricing-features" aria-label="Growth plan features">
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Fully Detailed Custom Website &amp; Web Application</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Custom UI/UX Engineering &amp; High-End Prototyping</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> 5 AI-Powered Marketing Posters</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Mobile &amp; Tablet Responsive Implementation</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Secure Cloud Deployment &amp; Hosting Setup</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> 14-Day Post-Launch Support</li>
+                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> 3D / WebGL Integration</li>
+                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> AI Chatbot &amp; BI Dashboard</li>
+                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> Google Ads &amp; Meta Ads</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select NBOS Growth plan">Select Growth</a>
+                <div class="premium-glow-border" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- Web Card 3: Enterprise -->
+            <div class="pricing-card pricing-card-premium" id="plan-enterprise" aria-labelledby="plan-enterprise-title">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">Enterprise</div>
+                  <h3 class="pricing-name" id="plan-enterprise-title">NBOS Enterprise</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">69,999</span>
+                  </div>
+                  <p class="pricing-caption">Fully automated enterprise systems, 3D WebGL, AI Chatbot &amp; BI Dashboards for industry leaders.</p>
+                </div>
+                <ul class="pricing-features" aria-label="Enterprise plan features">
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Everything in Standard &amp; Growth</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Full E-Commerce &amp; Online Store Engine</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> 3D / WebGL Interactive Experience</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> AI Chatbot Integration</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Detailed Business Intelligence (BI) Dashboard</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Google Ads Campaign Management</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Meta Ads Campaign Management</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Priority Deployment (72-Hour Delivery Target)</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> 30-Day Post-Launch Support</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Dedicated Project Architect</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select NBOS Enterprise plan">Select Enterprise</a>
+                <div class="premium-glow-border" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- Web Card 4: Custom -->
+            <div class="pricing-card pricing-card-premium" id="plan-web-custom" aria-labelledby="plan-web-custom-title">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">Custom</div>
+                  <h3 class="pricing-name" id="plan-web-custom-title">Custom Web Plan</h3>
+                  <div class="pricing-price">
+                    <span class="price-amount" style="font-size: 1.75rem;">Custom</span>
+                  </div>
+                  <p class="pricing-caption">Tailored web solutions, specialized portals, and bespoke architectures.</p>
+                </div>
+                <ul class="pricing-features" aria-label="Custom Web plan features">
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Fully Bespoke UI/UX Design</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Complex Web Application Features</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Custom Integrations (API, ERP, CRM)</li>
+                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Dedicated Project Manager &amp; Dev Team</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select Custom Web plan">Contact Enterprise</a>
+                <div class="premium-glow-border" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Panel 2: AI & Automation (4 Cards) -->
+        <div class="tab-panel" id="panel-ai" role="tabpanel" aria-labelledby="tab-ai">
+          <div class="pricing-grid pricing-grid-4">
+            <!-- AI Card 1: AI Starter -->
+            <div class="pricing-card pricing-card-premium" id="plan-ai-starter">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">Starter</div>
+                  <h3 class="pricing-name">AI Starter</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">14,999</span>
+                    <span class="price-period">/ Mo</span>
+                  </div>
+                  <p class="pricing-caption">Ideal for businesses initiating online marketing &amp; automated responses.</p>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Basic WhatsApp &amp; Insta Automation (Welcome &amp; FAQ Bot)</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 8 AI Social Media Posters / Month</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 2 AI UGC Videos (Reels &amp; Shorts)</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 1 Basic Email Automation Sequence</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Standard Technical Support</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select AI Starter plan">Select AI Starter</a>
+                <div class="premium-glow-border" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- AI Card 2: AI Growth (Featured / Most Popular) -->
+            <div class="pricing-card pricing-card-premium pricing-card-featured" id="plan-ai-growth">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge-row">
+                    <span class="most-selling-badge">🔥 MOST POPULAR</span>
+                    <span class="pricing-badge pricing-badge-premium">Growth</span>
+                  </div>
+                  <h3 class="pricing-name">AI Growth</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">29,999</span>
+                    <span class="price-period">/ Mo</span>
+                  </div>
+                  <p class="pricing-caption">For growing businesses needing qualified leads, ad campaigns &amp; sales.</p>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced WhatsApp &amp; Insta Chatbot (Lead Gen)</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 1 Ad Campaign Setup &amp; Management (FB/Insta)</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 15 Custom AI Posters / Month</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 4 High-Quality AI UGC Videos</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced Email Marketing (Cart &amp; Newsletter)</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Monthly Performance &amp; ROI Report</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select AI Growth plan">Select AI Growth</a>
+                <div class="premium-glow-border" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- AI Card 3: AI Pro -->
+            <div class="pricing-card pricing-card-premium" id="plan-ai-pro">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">Pro</div>
+                  <h3 class="pricing-name">AI Pro</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">49,999</span>
+                    <span class="price-period">/ Mo</span>
+                  </div>
+                  <p class="pricing-caption">Full-scale multi-channel marketing &amp; CRM integration for brands.</p>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Multi-Channel Automation (WhatsApp + Insta + Email)</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 2-3 Paid Ad Campaigns (with A/B Testing)</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 30 AI Posters / Month (Daily Posting)</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 8 to 10 AI UGC Videos (Viral Hooks)</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Direct CRM Integration (Instant Lead Sync)</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select AI Pro plan">Select AI Pro</a>
+                <div class="premium-glow-border" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- AI Card 4: AI Custom / Enterprise -->
+            <div class="pricing-card pricing-card-premium" id="plan-ai-custom">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">Custom</div>
+                  <h3 class="pricing-name">AI Custom</h3>
+                  <div class="pricing-price">
+                    <span class="price-amount" style="font-size: 1.75rem;">Custom</span>
+                  </div>
+                  <p class="pricing-caption">Tailored AI models, dedicated workflows &amp; enterprise scale.</p>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Fully Customized AI &amp; Automation Architecture</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Unlimited Graphic Designs &amp; Video Production</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Dedicated AI Automation Specialist</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 24/7 SLA Priority Infrastructure</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select AI Custom plan">Contact Enterprise</a>
+                <div class="premium-glow-border" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Panel 3: Maintenance & Care (3 Cards) -->
+        <div class="tab-panel" id="panel-maint" role="tabpanel" aria-labelledby="tab-maint">
+          <div class="pricing-grid">
+            <!-- Care Card 1: Basic Care -->
+            <div class="pricing-card pricing-card-premium" id="plan-maint-basic">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">Basic</div>
+                  <h3 class="pricing-name">Basic Care</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">4,999</span>
+                    <span class="price-period">/ Mo</span>
+                  </div>
+                  <p class="pricing-caption">Website maintenance, hosting management &amp; monthly backups.</p>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Website Hosting &amp; Domain Management</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Monthly Website &amp; Database Backups</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Software &amp; Core Plugin Updates</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Bug Fixing &amp; Uptime Monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 1-2 Small Content/Image Edits / Month</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select Basic Care plan">Select Basic Care</a>
+                <div class="premium-glow-border" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- Care Card 2: Tech & Bot Support (Featured / Most Selling) -->
+            <div class="pricing-card pricing-card-premium pricing-card-featured" id="plan-maint-tech">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge-row">
+                    <span class="most-selling-badge">🔥 MOST SELLING</span>
+                    <span class="pricing-badge pricing-badge-premium">Tech &amp; Bot</span>
+                  </div>
+                  <h3 class="pricing-name">Tech &amp; Bot Support</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">9,999</span>
+                    <span class="price-period">/ Mo</span>
+                  </div>
+                  <p class="pricing-caption">Full website care + WhatsApp &amp; Insta bot uptime monitoring.</p>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> All Basic Care Features Included</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> WhatsApp &amp; Insta Bot Active Uptime Monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 1-2 Monthly Automation Flow Updates (Reply Edits)</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Weekly Database Backups</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Priority Technical Support</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select Tech &amp; Bot Support plan">Select Tech &amp; Bot Support</a>
+                <div class="premium-glow-border" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- Care Card 3: All-In-One Management -->
+            <div class="pricing-card pricing-card-premium" id="plan-maint-allinone">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">All-In-One</div>
+                  <h3 class="pricing-name">All-In-One Management</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">19,999</span>
+                    <span class="price-period">/ Mo</span>
+                  </div>
+                  <p class="pricing-caption">24/7 total system management, speed optimization &amp; dedicated manager.</p>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Daily Website Backup &amp; Advanced Security</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Unlimited Small Automation &amp; Campaign Updates</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Adding New Services / Products to Website</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Server Speed &amp; Database Optimization</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 24/7 Instant Support &amp; Dedicated Manager</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select All-In-One Management plan">Select All-In-One</a>
+                <div class="premium-glow-border" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inquiry Form -->
+        <div class="inquiry-section" id="contact" data-reveal>
+          <div class="inquiry-header">
+            <div class="section-eyebrow">
+              <span class="eyebrow-dot"></span>
+              <span>Inquiry</span>
+            </div>
+            <h2 class="section-title">Start Your Project Inquiry</h2>
+            <p class="section-body">
+              Submit your details and an NBOS technology consultant will respond within one business day.
+            </p>
+          </div>
+
+          <form class="inquiry-form" id="inquiry-form" novalidate aria-label="Project inquiry form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="owner-name">
+                  Owner Name <span class="required-mark" aria-label="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="owner-name"
+                  name="owner_name"
+                  class="form-input"
+                  placeholder="Enter owner / founder full name"
+                  required
+                  autocomplete="name"
+                  aria-required="true"
+                  aria-describedby="owner-name-error"
+                />
+                <span class="form-error" id="owner-name-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="business-name">
+                  Business Name <span class="required-mark" aria-label="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="business-name"
+                  name="business_name"
+                  class="form-input"
+                  placeholder="Enter company / brand name"
+                  required
+                  autocomplete="organization"
+                  aria-required="true"
+                  aria-describedby="business-name-error"
+                />
+                <span class="form-error" id="business-name-error" role="alert" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="call-number">
+                  Mobile Number
+                </label>
+                <input
+                  type="tel"
+                  id="call-number"
+                  name="call_number"
+                  class="form-input"
+                  placeholder="+91 98765 43210"
+                  autocomplete="tel"
+                  aria-describedby="call-number-error"
+                />
+                <span class="form-error" id="call-number-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="email-address">
+                  Email ID <span class="required-mark" aria-label="required">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email-address"
+                  name="email_address"
+                  class="form-input"
+                  placeholder="contact@company.com"
+                  required
+                  autocomplete="email"
+                  aria-required="true"
+                  aria-describedby="email-address-error"
+                />
+                <span class="form-error" id="email-address-error" role="alert" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="whatsapp-number">
+                  WhatsApp Number <span class="required-mark" aria-label="required">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="whatsapp-number"
+                  name="whatsapp_number"
+                  class="form-input"
+                  placeholder="+91 98765 43210"
+                  required
+                  autocomplete="tel"
+                  aria-required="true"
+                  aria-describedby="whatsapp-number-error"
+                />
+                <span class="form-error" id="whatsapp-number-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="package-select">
+                  Choose Packages <span class="required-mark" aria-label="required">*</span>
+                </label>
+                <div class="select-wrap">
+                  <select
+                    id="package-select"
+                    name="package"
+                    class="form-select"
+                    required
+                    aria-required="true"
+                    aria-describedby="package-select-error"
+                  >
+                    <option value="" disabled selected>Select a package</option>
+                    <optgroup label="Website &amp; Systems">
+                      <option value="standard">NBOS Standard — ₹24,999</option>
+                      <option value="growth">NBOS Growth — ₹44,999</option>
+                      <option value="enterprise">NBOS Enterprise — ₹69,999</option>
+                      <option value="web-custom">Custom Web Plan — Custom Pricing</option>
+                    </optgroup>
+                    <optgroup label="AI &amp; Automation (Monthly)">
+                      <option value="ai-starter">AI Starter — ₹14,999 / Mo</option>
+                      <option value="ai-growth">AI Growth — ₹29,999 / Mo</option>
+                      <option value="ai-pro">AI Pro — ₹49,999 / Mo</option>
+                      <option value="ai-custom">AI Custom / Enterprise — Custom</option>
+                    </optgroup>
+                    <optgroup label="Maintenance &amp; Care (Monthly)">
+                      <option value="maint-basic">Basic Care — ₹4,999 / Mo</option>
+                      <option value="maint-tech">Tech &amp; Bot Support — ₹9,999 / Mo</option>
+                      <option value="maint-allinone">All-In-One Management — ₹19,999 / Mo</option>
+                    </optgroup>
+                  </select>
+                  <span class="select-arrow" aria-hidden="true">↓</span>
+                </div>
+                <span class="form-error" id="package-select-error" role="alert" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="special-requirement">
+                Any Special Requirement <span class="form-optional">(Optional)</span>
+              </label>
+              <textarea
+                id="special-requirement"
+                name="special_requirement"
+                class="form-textarea"
+                placeholder="Mention any custom features, integrations, or specific deadlines..."
+                rows="4"
+                autocomplete="off"
+              ></textarea>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-primary btn-lg" id="form-submit-btn">
+                <span class="btn-label">Submit Inquiry</span>
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </button>
+              <p class="form-note">
+                Your information is kept strictly confidential. No spam, no unsolicited outreach.
+              </p>
+            </div>
+
+            <!-- Success / Error States -->
+            <div class="form-status form-success" id="form-success" role="status" aria-live="polite" hidden>
+              <span class="status-icon">✓</span>
+              <strong>Inquiry Received!</strong> An NBOS consultant will contact you within one business day.
+            </div>
+            <div class="form-status form-error-state" id="form-error-state" role="alert" aria-live="assertive" hidden>
+              <span class="status-icon">!</span>
+              Please review the fields above and resubmit.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCREEN 4 — WORKFLOW & INVOICE
+    ============================================================ -->
+    <section class="workflow" id="workflow" aria-labelledby="workflow-heading">
+      <div class="container">
+
+        <div class="section-header" data-reveal>
+          <div class="section-eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Delivery Process</span>
+          </div>
+          <h2 class="section-title" id="workflow-heading">From Consultation to Deployment</h2>
+          <p class="section-body">
+            A structured, transparent delivery workflow engineered for speed and predictable outcomes.
+          </p>
+        </div>
+
+        <div class="workflow-split">
+
+          <!-- LEFT: Delivery Timeline -->
+          <div class="timeline-wrap" data-reveal>
+            <div class="timeline">
+
+              <div class="timeline-node" data-reveal data-delay="0">
+                <div class="node-connector">
+                  <div class="node-dot">
+                    <div class="node-inner"></div>
+                  </div>
+                  <div class="connector-line"></div>
+                </div>
+                <div class="node-content">
+                  <div class="node-number">01</div>
+                  <h3 class="node-title">Consult</h3>
+                  <p class="node-desc">
+                    A focused consultation to map your business objectives, technical requirements, and delivery timeline. We scope the engagement precisely before writing a single line of code.
+                  </p>
+                  <div class="node-tags">
+                    <span class="node-tag">Requirements Analysis</span>
+                    <span class="node-tag">Architecture Scoping</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-node" data-reveal data-delay="1">
+                <div class="node-connector">
+                  <div class="node-dot">
+                    <div class="node-inner"></div>
+                  </div>
+                  <div class="connector-line"></div>
+                </div>
+                <div class="node-content">
+                  <div class="node-number">02</div>
+                  <h3 class="node-title">AI-Build</h3>
+                  <p class="node-desc">
+                    Our engineering team uses AI-accelerated development workflows to build, test, and iterate rapidly — without sacrificing quality or architectural integrity.
+                  </p>
+                  <div class="node-tags">
+                    <span class="node-tag">AI-Accelerated Dev</span>
+                    <span class="node-tag">QA Engineering</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-node last-node" data-reveal data-delay="2">
+                <div class="node-connector">
+                  <div class="node-dot active-dot">
+                    <div class="node-inner"></div>
+                  </div>
+                </div>
+                <div class="node-content">
+                  <div class="node-number">03</div>
+                  <h3 class="node-title">Free Deployment</h3>
+                  <p class="node-desc">
+                    Complete production deployment included at no additional cost. Your system goes live on reliable infrastructure with monitoring and handover documentation.
+                  </p>
+                  <div class="node-tags">
+                    <span class="node-tag">Production Hosting</span>
+                    <span class="node-tag">Zero Extra Cost</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RIGHT: Corporate Invoice Preview -->
+          <div class="invoice-wrap" data-reveal data-delay="1">
+            <div class="invoice-document" aria-label="NBOS Corporate Invoice Preview">
+
+              <!-- Invoice Header -->
+              <div class="inv-header">
+                <div class="inv-brand">
+                  <div class="inv-brand-name">NBOS</div>
+                  <div class="inv-brand-sub">A Nimje Group Venture</div>
+                </div>
+                <div class="inv-meta-block">
+                  <div class="inv-meta-title">CORPORATE INVOICE PREVIEW</div>
+                  <div class="inv-meta-row">
+                    <span class="inv-meta-label">Invoice No.</span>
+                    <span class="inv-meta-val">NBOS-2024-0147</span>
+                  </div>
+                  <div class="inv-meta-row">
+                    <span class="inv-meta-label">Date</span>
+                    <span class="inv-meta-val">10 August 2026</span>
+                  </div>
+                  <div class="inv-meta-row">
+                    <span class="inv-meta-label">Due Date</span>
+                    <span class="inv-meta-val">17 August 2026</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="inv-divider"></div>
+
+              <!-- Client Info -->
+              <div class="inv-parties">
+                <div class="inv-party">
+                  <div class="inv-party-label">FROM</div>
+                  <div class="inv-party-name">NBOS — Nimje Group</div>
+                  <div class="inv-party-detail">Technology Ventures Division</div>
+                  <div class="inv-party-detail">contact@nbos.in</div>
+                </div>
+                <div class="inv-party">
+                  <div class="inv-party-label">TO</div>
+                  <div class="inv-party-name">Client Company Ltd.</div>
+                  <div class="inv-party-detail">Authorized Signatory</div>
+                  <div class="inv-party-detail">client@company.in</div>
+                </div>
+              </div>
+
+              <div class="inv-divider"></div>
+
+              <!-- Itemized Table -->
+              <table class="inv-table" aria-label="Invoice line items">
+                <thead>
+                  <tr>
+                    <th scope="col">Service Description</th>
+                    <th scope="col" class="text-right">Qty</th>
+                    <th scope="col" class="text-right">Rate</th>
+                    <th scope="col" class="text-right">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="item-name">Custom Web Application (Full-Stack)</div>
+                      <div class="item-desc">UI/UX Design, Development &amp; Testing</div>
+                    </td>
+                    <td class="text-right">1</td>
+                    <td class="text-right">₹24,999</td>
+                    <td class="text-right">₹24,999</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="item-name">AI Marketing Automation Suite</div>
+                      <div class="item-desc">Campaign Workflows, LLM Integration</div>
+                    </td>
+                    <td class="text-right">1</td>
+                    <td class="text-right">₹12,000</td>
+                    <td class="text-right">₹12,000</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="item-name">Business ERP Module</div>
+                      <div class="item-desc">Dashboard, Workflow Engine, Reports</div>
+                    </td>
+                    <td class="text-right">1</td>
+                    <td class="text-right">₹10,000</td>
+                    <td class="text-right">₹10,000</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="item-name">Production Deployment &amp; DevOps</div>
+                      <div class="item-desc">Hosting Setup, CI/CD, Monitoring</div>
+                    </td>
+                    <td class="text-right">1</td>
+                    <td class="text-right">₹0</td>
+                    <td class="text-right"><span class="free-badge">FREE</span></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Totals -->
+              <div class="inv-totals">
+                <div class="inv-total-row">
+                  <span>Subtotal</span>
+                  <span>₹46,999</span>
+                </div>
+                <div class="inv-total-row">
+                  <span>GST (18%)</span>
+                  <span>₹3,000</span>
+                </div>
+                <div class="inv-divider inv-divider-sm"></div>
+                <div class="inv-total-row inv-total-final">
+                  <span>Total Amount</span>
+                  <span class="inv-total-amount">₹49,999</span>
+                </div>
+              </div>
+
+              <!-- FULLY PAID STAMP -->
+              <div class="inv-stamp-wrap" aria-label="Payment status: Fully Paid and Settled">
+                <div class="inv-stamp">
+                  <div class="stamp-inner">
+                    <div class="stamp-line stamp-top">FULLY PAID</div>
+                    <div class="stamp-icon" aria-hidden="true">✓</div>
+                    <div class="stamp-line stamp-bottom">& SETTLED</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Invoice Footer -->
+              <div class="inv-footer">
+                <div class="inv-footer-note">This is a visual UI mockup for demonstration purposes. All figures are illustrative.</div>
+                <div class="inv-footer-brand">NBOS · nbos.in</div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-brand">
+          <div class="footer-brand-name">NBOS</div>
+          <div class="footer-brand-sub">A Nimje Group Venture</div>
+          <p class="footer-tagline">
+            Serious business operations, engineered through smart technology.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-col">
+            <div class="footer-col-title">Navigation</div>
+            <a href="#showcase" class="footer-link">Services</a>
+            <a href="#pricing" class="footer-link">Pricing</a>
+            <a href="contact-us.html" class="footer-link">Contact Us</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Technology</div>
+            <a href="#showcase" class="footer-link">3D Web Apps</a>
+            <a href="#showcase" class="footer-link">AI Marketing</a>
+            <a href="#showcase" class="footer-link">UI/UX Design</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Legal</div>
+            <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+            <a href="terms-conditions.html" class="footer-link">Terms & Conditions</a>
+            <a href="refund-policy.html" class="footer-link">Refund Policy</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 NBOS — Nimje Group. All rights reserved.</span>
+        <span class="footer-bottom-right">Built with precision by NBOS Engineering.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       PLAN DETAILS & QUOTE MODAL POPUP
+  ============================================================ -->
+  <div class="plan-modal-overlay" id="plan-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-plan-title">
+    <div class="plan-modal-backdrop" id="modal-backdrop"></div>
+    <div class="plan-modal-container">
+      <button class="plan-modal-close" id="modal-close-btn" aria-label="Close modal">✕</button>
+
+      <div class="plan-modal-header">
+        <span class="plan-modal-badge" id="modal-plan-badge">NBOS Package</span>
+        <h3 class="plan-modal-title" id="modal-plan-title">Plan Details</h3>
+        <div class="plan-modal-price" id="modal-plan-price">₹0</div>
+        <p class="plan-modal-caption" id="modal-plan-caption"></p>
+      </div>
+
+      <div class="plan-modal-body">
+        <h4 class="modal-section-subtitle">Package Specifications &amp; Features</h4>
+        <ul class="modal-feature-list" id="modal-feature-list">
+          <!-- Populated dynamically via JS -->
+        </ul>
+      </div>
+
+      <div class="plan-modal-footer">
+        <button class="btn btn-outline" id="modal-cancel-btn">Close</button>
+        <button class="btn btn-primary" id="modal-proceed-btn">Proceed to Inquiry <span aria-hidden="true">→</span></button>
+      </div>
+    </div>
+  </div>
+  </div> <!-- End of #app-content -->
+
+  <!-- ============================================================
+       AUTH MODAL (Supabase)
+  ============================================================ -->
+  <div class="auth-modal-overlay" id="auth-modal">
+    <div class="auth-modal-container">
+      <h3 class="auth-modal-title" id="auth-title">Welcome to NBOS</h3>
+      <p id="auth-subtitle" style="color: var(--text-secondary); font-size: 0.875rem; text-align: center; margin-top: -16px; margin-bottom: 20px; display: none;"></p>
+      
+      <form id="auth-form">
+        <div class="auth-form-group" id="group-auth-email">
+          <label for="auth-email">Email Address</label>
+          <input type="email" id="auth-email" required placeholder="Enter your email" />
+        </div>
+        
+        <div class="auth-form-group" id="group-auth-password">
+          <label for="auth-password" id="label-auth-password">Password</label>
+          <input type="password" id="auth-password" required placeholder="Enter your password" />
+        </div>
+
+        <div id="forgot-password-row" style="display: flex; justify-content: flex-end; margin-top: -8px; margin-bottom: 14px;">
+          <a href="#" id="link-forgot-password" class="auth-link">Forgot Password?</a>
+        </div>
+
+        <div id="auth-error" class="auth-error" hidden></div>
+        <div id="auth-success" class="auth-msg-success" hidden></div>
+        
+        <div class="auth-btn-row" id="auth-btns-default">
+          <button type="submit" class="btn btn-primary" id="btn-signin">Sign In</button>
+          <button type="button" class="btn btn-outline" id="btn-signup">Create Account</button>
+        </div>
+
+        <div class="auth-btn-row" id="auth-btns-reset" style="display: none;">
+          <button type="button" class="btn btn-primary" id="btn-send-reset">Send Reset Link</button>
+          <button type="button" class="btn btn-outline" id="btn-back-signin">Back to Sign In</button>
+        </div>
+
+        <div class="auth-btn-row" id="auth-btns-update" style="display: none;">
+          <button type="button" class="btn btn-primary" id="btn-update-password">Update Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       INQUIRY SUCCESS MODAL
+  ============================================================ -->
+  <div class="auth-modal-overlay" id="success-modal">
+    <div class="auth-modal-container" style="text-align: center;">
+      <div style="font-size: 3rem; color: #10b981; margin-bottom: 16px;">✓</div>
+      <h3 class="auth-modal-title" style="margin-bottom: 12px;">Request Confirmed!</h3>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; margin-bottom: 24px;">
+        Thank you! Your order request has been successfully received. 
+        <br><br>
+        Our team will contact you shortly via <strong>Call, Email, or WhatsApp</strong> to confirm your order details and proceed further.
+      </p>
+      <button class="btn btn-primary" style="width: 100%;" id="btn-close-success">Okay, Got it</button>
+    </div>
+  </div>
+
+  <script src="app.js?v=25"></script>
+</body>
+</html>
