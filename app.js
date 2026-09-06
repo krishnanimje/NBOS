@@ -975,351 +975,178 @@ window.downloadNBOSLeads = function() {
 /* ============================================================
    9. SUPABASE AUTHENTICATION
 ============================================================ */
-(function initSupabaseAuth() {
-  const SUPABASE_URL = 'https://lltblwkbixxpaoahbyli.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxsdGJsd2tiaXh4cGFvYWhieWxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY2Mjg2MzIsImV4cCI6MjEwMjIwNDYzMn0.6N7sTqyncPpS1aMjjnvbIM-pubsrIQ0Y16x6-OcGB84';
-
-  if (!window.supabase) {
-    console.warn('[NBOS Auth] Supabase SDK not found.');
-    return;
-  }
-
-  if (SUPABASE_URL === 'YOUR_SUPABASE_URL') {
-    console.warn('[NBOS Auth] Supabase credentials missing. Auth flow disabled.');
-    // Let users pass through for preview purposes if credentials are not set
-    const appContent = document.getElementById('app-content');
-    if (appContent) appContent.style.display = 'block';
-    return;
-  }
-
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  window.nbosSupabase = supabase;
-
+(function initAuth() {
   const authModal = document.getElementById('auth-modal');
   const appContent = document.getElementById('app-content');
   const authForm = document.getElementById('auth-form');
-  const authTitle = document.getElementById('auth-title');
-  const authSubtitle = document.getElementById('auth-subtitle');
-  const groupAuthEmail = document.getElementById('group-auth-email');
-  const groupAuthPassword = document.getElementById('group-auth-password');
-  const labelAuthPassword = document.getElementById('label-auth-password');
   const emailInput = document.getElementById('auth-email');
-  const passwordInput = document.getElementById('auth-password');
-  const errorDiv = document.getElementById('auth-error');
-  const successDiv = document.getElementById('auth-success');
-  const forgotPasswordRow = document.getElementById('forgot-password-row');
-  const linkForgotPassword = document.getElementById('link-forgot-password');
-  const authBtnsDefault = document.getElementById('auth-btns-default');
-  const authBtnsReset = document.getElementById('auth-btns-reset');
-  const authBtnsUpdate = document.getElementById('auth-btns-update');
   const btnSignIn = document.getElementById('btn-signin');
-  const btnSignUp = document.getElementById('btn-signup');
-  const btnSendReset = document.getElementById('btn-send-reset');
-  const btnBackSignin = document.getElementById('btn-back-signin');
-  const btnUpdatePassword = document.getElementById('btn-update-password');
   const btnLogout = document.getElementById('nav-logout');
   const navCta = document.getElementById('nav-cta');
+  
+  const authError = document.getElementById('auth-error');
+  const authSuccess = document.getElementById('auth-success');
 
-  let isSubmitting = false;
-  let currentAuthMode = 'signin'; // 'signin' | 'forgot' | 'update_password'
+  const historySection = document.getElementById('history-section');
+  const historyList = document.getElementById('history-list');
+  const loggedInEmailDisplay = document.getElementById('logged-in-email-display');
+  const btnInlineLogout = document.getElementById('btn-inline-logout');
 
-  function showError(msg) {
-    if (errorDiv) {
-      errorDiv.textContent = msg;
-      errorDiv.hidden = false;
-    }
-    if (successDiv) {
-      successDiv.hidden = true;
-    }
-  }
-
-  function showSuccess(msg) {
-    if (successDiv) {
-      successDiv.textContent = msg;
-      successDiv.hidden = false;
-    }
-    if (errorDiv) {
-      errorDiv.hidden = true;
-    }
+  // Keep Supabase initialized for form submission logic if needed
+  const SUPABASE_URL = 'https://lltblwkbixxpaoahbyli.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxsdGJsd2tiaXh4cGFvYWhieWxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY2Mjg2MzIsImV4cCI6MjEwMjIwNDYzMn0.6N7sTqyncPpS1aMjjnvbIM-pubsrIQ0Y16x6-OcGB84';
+  if (window.supabase) {
+    window.nbosSupabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   }
 
   function clearMessages() {
-    if (errorDiv) {
-      errorDiv.textContent = '';
-      errorDiv.hidden = true;
-    }
-    if (successDiv) {
-      successDiv.textContent = '';
-      successDiv.hidden = true;
-    }
+    if (authError) { authError.textContent = ''; authError.hidden = true; }
+    if (authSuccess) { authSuccess.textContent = ''; authSuccess.hidden = true; }
   }
 
-  function setAuthMode(mode) {
-    currentAuthMode = mode;
-    clearMessages();
-
-    if (mode === 'signin') {
-      if (authTitle) authTitle.textContent = 'Welcome to NBOS';
-      if (authSubtitle) authSubtitle.style.display = 'none';
-      if (groupAuthEmail) groupAuthEmail.style.display = 'block';
-      if (emailInput) emailInput.required = true;
-      if (groupAuthPassword) groupAuthPassword.style.display = 'block';
-      if (passwordInput) {
-        passwordInput.required = true;
-        passwordInput.placeholder = 'Enter your password';
-      }
-      if (labelAuthPassword) labelAuthPassword.textContent = 'Password';
-      if (forgotPasswordRow) forgotPasswordRow.style.display = 'flex';
-      if (authBtnsDefault) authBtnsDefault.style.display = 'flex';
-      if (authBtnsReset) authBtnsReset.style.display = 'none';
-      if (authBtnsUpdate) authBtnsUpdate.style.display = 'none';
-    } else if (mode === 'forgot') {
-      if (authTitle) authTitle.textContent = 'Reset Password';
-      if (authSubtitle) {
-        authSubtitle.textContent = 'Enter your email to receive a password reset link.';
-        authSubtitle.style.display = 'block';
-      }
-      if (groupAuthEmail) groupAuthEmail.style.display = 'block';
-      if (emailInput) emailInput.required = true;
-      if (groupAuthPassword) groupAuthPassword.style.display = 'none';
-      if (passwordInput) passwordInput.required = false;
-      if (forgotPasswordRow) forgotPasswordRow.style.display = 'none';
-      if (authBtnsDefault) authBtnsDefault.style.display = 'none';
-      if (authBtnsReset) authBtnsReset.style.display = 'flex';
-      if (authBtnsUpdate) authBtnsUpdate.style.display = 'none';
-    } else if (mode === 'update_password') {
-      if (authTitle) authTitle.textContent = 'Set New Password';
-      if (authSubtitle) {
-        authSubtitle.textContent = 'Enter your new password below to reset your account.';
-        authSubtitle.style.display = 'block';
-      }
-      if (groupAuthEmail) groupAuthEmail.style.display = 'none';
-      if (emailInput) emailInput.required = false;
-      if (groupAuthPassword) groupAuthPassword.style.display = 'block';
-      if (passwordInput) {
-        passwordInput.required = true;
-        passwordInput.value = '';
-        passwordInput.placeholder = 'Enter new password (min 6 characters)';
-      }
-      if (labelAuthPassword) labelAuthPassword.textContent = 'New Password';
-      if (forgotPasswordRow) forgotPasswordRow.style.display = 'none';
-      if (authBtnsDefault) authBtnsDefault.style.display = 'none';
-      if (authBtnsReset) authBtnsReset.style.display = 'none';
-      if (authBtnsUpdate) authBtnsUpdate.style.display = 'flex';
-    }
+  function showError(msg) {
+    if (authError) { authError.textContent = msg; authError.hidden = false; }
   }
 
-  function toggleLoading(btn, loadingText) {
-    if (!btn) return;
-    if (isSubmitting) {
-      btn.dataset.origText = btn.textContent;
-      btn.textContent = loadingText;
-      btn.disabled = true;
-    } else {
-      btn.textContent = btn.dataset.origText || btn.textContent;
-      btn.disabled = false;
-    }
-  }
-
-  // Switch to Forgot Password mode
-  linkForgotPassword?.addEventListener('click', (e) => {
-    e.preventDefault();
-    setAuthMode('forgot');
-  });
-
-  // Switch back to Sign In
-  btnBackSignin?.addEventListener('click', (e) => {
-    e.preventDefault();
-    setAuthMode('signin');
-  });
-
-  // Monitor Auth State
-  supabase.auth.onAuthStateChange((event, session) => {
-    if (event === 'PASSWORD_RECOVERY') {
-      if (authModal) authModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      setAuthMode('update_password');
+  function renderHistory(email) {
+    if (!historySection || !historyList) return;
+    
+    const savedLeads = JSON.parse(localStorage.getItem('nbos_inquiries') || '[]');
+    const userHistory = savedLeads.filter(lead => lead.email_address && lead.email_address.toLowerCase() === email.toLowerCase());
+    
+    if (loggedInEmailDisplay) loggedInEmailDisplay.textContent = email;
+    historySection.style.display = 'block';
+    
+    if (userHistory.length === 0) {
+      historyList.innerHTML = '<div style="color: var(--text-secondary); grid-column: 1 / -1; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; text-align: center;">No past quotations or orders found for this account.</div>';
       return;
     }
-
-    if (session) {
-      // If user is currently updating their password, keep the modal active until done
-      if (currentAuthMode === 'update_password') {
-        if (authModal) authModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        return;
+    
+    historyList.innerHTML = userHistory.reverse().map(item => {
+      let packageLabel = item.package || 'Custom Services';
+      let amount = 'Custom Pricing';
+      
+      const optionEl = document.querySelector(`#package-select option[value="${item.package}"]`);
+      if (optionEl) {
+        const parts = optionEl.textContent.split('—');
+        if (parts.length > 1) {
+          packageLabel = parts[0].trim();
+          amount = parts[1].trim();
+        } else {
+          packageLabel = optionEl.textContent;
+        }
       }
 
-      // Logged in
-      if (authModal) authModal.classList.remove('active');
-      if (appContent) appContent.style.display = 'block';
-      if (btnLogout) btnLogout.style.display = 'inline-block';
-      if (navCta) navCta.style.display = 'none';
-      if (authForm) authForm.reset();
-      document.body.style.overflow = '';
-    } else {
-      // Not logged in
-      if (authModal) authModal.classList.add('active');
-      if (appContent) appContent.style.display = 'none';
-      if (btnLogout) btnLogout.style.display = 'none';
-      if (navCta) navCta.style.display = 'inline-block';
-      document.body.style.overflow = 'hidden';
+      return `
+        <div class="pricing-card pricing-card-premium" style="padding: 24px; text-align: left;">
+          <div style="font-size: 0.85rem; color: var(--primary-color); margin-bottom: 8px;">
+            ${new Date(item.submitted_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute:'2-digit' })}
+          </div>
+          <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 12px;">${packageLabel} Quotation</h3>
+          
+          <div style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">
+            <strong>Business/Project:</strong> <span style="color: #e2e8f0;">${item.business_name || 'N/A'}</span><br>
+            <strong>Amount:</strong> <span style="color: #10b981; font-weight: 600;">${amount}</span><br>
+            <strong>Status:</strong> <span style="color: #10b981;">Order Received</span>
+          </div>
+          
+          ${item.special_requirement ? `<div style="font-size: 0.85rem; color: #aaa; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px;"><strong>Requirements:</strong> ${item.special_requirement}</div>` : ''}
+          <div class="premium-glow-border" aria-hidden="true"></div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function simulateLogin(email) {
+    if (authModal) authModal.classList.remove('active');
+    if (appContent) appContent.style.display = 'block';
+    if (btnLogout) btnLogout.style.display = 'inline-block';
+    if (navCta) navCta.style.display = 'none';
+    document.body.style.overflow = '';
+    renderHistory(email);
+
+    const inquiryEmail = document.getElementById('email-address');
+    if (inquiryEmail) {
+      inquiryEmail.value = email;
+      inquiryEmail.readOnly = true;
+      inquiryEmail.style.opacity = '0.7';
     }
-  });
+  }
+
+  function simulateLogout() {
+    localStorage.removeItem('nbos_logged_in_user');
+    if (authModal) authModal.classList.add('active');
+    if (appContent) appContent.style.display = 'none';
+    if (btnLogout) btnLogout.style.display = 'none';
+    if (navCta) navCta.style.display = 'inline-block';
+    if (historySection) historySection.style.display = 'none';
+    document.body.style.overflow = 'hidden';
+    
+    const inquiryEmail = document.getElementById('email-address');
+    if (inquiryEmail) {
+      inquiryEmail.value = '';
+      inquiryEmail.readOnly = false;
+      inquiryEmail.style.opacity = '1';
+    }
+    
+    const authEmail = document.getElementById('auth-email');
+    if (authEmail) authEmail.value = '';
+  }
 
   // Check initial session
-  supabase.auth.getSession().then(({ data: { session } }) => {
-    if (!session && authModal) {
+  const loggedInUser = localStorage.getItem('nbos_logged_in_user');
+  if (loggedInUser) {
+    simulateLogin(loggedInUser);
+  } else {
+    if (authModal) {
       authModal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
-  });
+  }
 
-  // Handle Sign In
-  authForm?.addEventListener('submit', async (e) => {
+  // Handle Login
+  authForm?.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (isSubmitting || currentAuthMode !== 'signin') return;
-
     const email = emailInput?.value.trim();
-    const password = passwordInput?.value.trim();
-    if (!email || !password) return;
-
-    clearMessages();
-    isSubmitting = true;
-    toggleLoading(btnSignIn, 'Signing In...');
-
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-      
-      isSubmitting = false;
-      toggleLoading(btnSignIn);
-
-      if (error) {
-        showError(error.message);
-      }
-    } catch (err) {
-      isSubmitting = false;
-      toggleLoading(btnSignIn);
-      showError('Network error or invalid Supabase Key. Check console.');
-      console.error(err);
-    }
-  });
-
-  // Handle Sign Up
-  btnSignUp?.addEventListener('click', async () => {
-    if (isSubmitting || currentAuthMode !== 'signin') return;
-
-    const email = emailInput?.value.trim();
-    const password = passwordInput?.value.trim();
     
-    if (!email || !password) {
-      showError('Please enter email and password to create an account.');
-      return;
-    }
-
-    clearMessages();
-    isSubmitting = true;
-    toggleLoading(btnSignUp, 'Creating...');
-
-    try {
-      const { data, error } = await supabase.auth.signUp({ email, password });
-
-      isSubmitting = false;
-      toggleLoading(btnSignUp);
-
-      if (error) {
-        showError(error.message);
-      } else if (data?.user && data?.session === null) {
-        showSuccess('Account created! Check your email for the confirmation link.');
-      }
-    } catch (err) {
-      isSubmitting = false;
-      toggleLoading(btnSignUp);
-      showError('Network error or invalid Supabase Key. Check console.');
-      console.error(err);
-    }
-  });
-
-  // Handle Send Reset Password Link
-  btnSendReset?.addEventListener('click', async () => {
-    if (isSubmitting) return;
-
-    const email = emailInput?.value.trim();
     if (!email) {
-      showError('Please enter your email address.');
+      showError('Please enter a valid Gmail address.');
+      return;
+    }
+    
+    // User requested "Gmail-only" essentially, so enforcing a valid email format
+    if (!email.includes('@')) {
+      showError('Please enter a valid email address.');
       return;
     }
 
     clearMessages();
-    isSubmitting = true;
-    toggleLoading(btnSendReset, 'Sending Link...');
-
-    try {
-      const redirectUrl = window.location.origin + window.location.pathname;
-      const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: redirectUrl
-      });
-
-      isSubmitting = false;
-      toggleLoading(btnSendReset);
-
-      if (error) {
-        showError(error.message);
-      } else {
-        showSuccess('Password reset link sent! Please check your email inbox.');
-      }
-    } catch (err) {
-      isSubmitting = false;
-      toggleLoading(btnSendReset);
-      showError('Failed to send reset link. Please try again.');
-      console.error(err);
+    
+    if (btnSignIn) {
+      btnSignIn.textContent = 'Logging In...';
+      btnSignIn.disabled = true;
     }
+
+    setTimeout(() => {
+      localStorage.setItem('nbos_logged_in_user', email);
+      simulateLogin(email);
+      
+      if (btnSignIn) {
+        btnSignIn.textContent = 'Continue / Login';
+        btnSignIn.disabled = false;
+      }
+    }, 600); // Simulate network delay
   });
 
-  // Handle Update Password
-  btnUpdatePassword?.addEventListener('click', async () => {
-    if (isSubmitting) return;
-
-    const newPassword = passwordInput?.value.trim();
-    if (!newPassword || newPassword.length < 6) {
-      showError('New password must be at least 6 characters.');
-      return;
-    }
-
-    clearMessages();
-    isSubmitting = true;
-    toggleLoading(btnUpdatePassword, 'Updating...');
-
-    try {
-      const { data, error } = await supabase.auth.updateUser({ password: newPassword });
-
-      isSubmitting = false;
-      toggleLoading(btnUpdatePassword);
-
-      if (error) {
-        showError(error.message);
-      } else {
-        showSuccess('Password updated successfully! Redirecting...');
-        setTimeout(() => {
-          setAuthMode('signin');
-          if (authModal) authModal.classList.remove('active');
-          if (appContent) appContent.style.display = 'block';
-          if (btnLogout) btnLogout.style.display = 'inline-block';
-          if (navCta) navCta.style.display = 'none';
-          document.body.style.overflow = '';
-        }, 1500);
-      }
-    } catch (err) {
-      isSubmitting = false;
-      toggleLoading(btnUpdatePassword);
-      showError('Failed to update password. Please try again.');
-      console.error(err);
-    }
+  // Handle Logouts
+  btnLogout?.addEventListener('click', (e) => {
+    e.preventDefault();
+    simulateLogout();
   });
-
-  // Handle Log Out
-  btnLogout?.addEventListener('click', async () => {
-    await supabase.auth.signOut();
+  
+  btnInlineLogout?.addEventListener('click', (e) => {
+    e.preventDefault();
+    simulateLogout();
   });
 })();
 

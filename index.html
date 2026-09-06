@@ -714,6 +714,23 @@
           </div>
         </div>
 
+        <!-- History Section (Dynamically Populated) -->
+        <div class="inquiry-section history-section" id="history-section" style="display: none; margin-bottom: 40px;" data-reveal>
+          <div class="inquiry-header">
+            <div class="section-eyebrow">
+              <span class="eyebrow-dot"></span>
+              <span>Your Account</span>
+            </div>
+            <h2 class="section-title">Past Quotations & Orders</h2>
+            <p class="section-body">
+              Logged in as <strong id="logged-in-email-display"></strong>. <a href="#" id="btn-inline-logout" style="color: var(--primary-color);">Logout</a>
+            </p>
+          </div>
+          <div id="history-list" class="history-grid" style="display: grid; gap: 16px; margin-top: 20px;">
+            <!-- History items will be injected here -->
+          </div>
+        </div>
+
         <!-- Inquiry Form -->
         <div class="inquiry-section" id="contact" data-reveal>
           <div class="inquiry-header">
@@ -1209,33 +1226,14 @@
       <form id="auth-form">
         <div class="auth-form-group" id="group-auth-email">
           <label for="auth-email">Email Address</label>
-          <input type="email" id="auth-email" required placeholder="Enter your email" />
-        </div>
-        
-        <div class="auth-form-group" id="group-auth-password">
-          <label for="auth-password" id="label-auth-password">Password</label>
-          <input type="password" id="auth-password" required placeholder="Enter your password" />
-        </div>
-
-        <div id="forgot-password-row" style="display: flex; justify-content: flex-end; margin-top: -8px; margin-bottom: 14px;">
-          <a href="#" id="link-forgot-password" class="auth-link">Forgot Password?</a>
+          <input type="email" id="auth-email" required placeholder="Enter your valid Gmail address" />
         </div>
 
         <div id="auth-error" class="auth-error" hidden></div>
         <div id="auth-success" class="auth-msg-success" hidden></div>
         
         <div class="auth-btn-row" id="auth-btns-default">
-          <button type="submit" class="btn btn-primary" id="btn-signin">Sign In</button>
-          <button type="button" class="btn btn-outline" id="btn-signup">Create Account</button>
-        </div>
-
-        <div class="auth-btn-row" id="auth-btns-reset" style="display: none;">
-          <button type="button" class="btn btn-primary" id="btn-send-reset">Send Reset Link</button>
-          <button type="button" class="btn btn-outline" id="btn-back-signin">Back to Sign In</button>
-        </div>
-
-        <div class="auth-btn-row" id="auth-btns-update" style="display: none;">
-          <button type="button" class="btn btn-primary" id="btn-update-password">Update Password</button>
+          <button type="submit" class="btn btn-primary" id="btn-signin" style="width: 100%;">Continue / Login</button>
         </div>
       </form>
     </div>
@@ -1257,6 +1255,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=25"></script>
+  <script src="app.js?v=26"></script>
 </body>
 </html>
