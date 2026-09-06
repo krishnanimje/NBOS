@@ -1,5 +1,5 @@
 /**
- * NBOS — app.js
+ * NTOS — app.js
  * Premium WebGL 3D Geodesic Matrix Sphere Engine + All Page Interactions
  */
 
@@ -80,7 +80,7 @@
   const fallback = document.getElementById('webgl-fallback');
 
   function showFallback(reason) {
-    console.warn('[NBOS WebGL Fallback]:', reason);
+    console.warn('[NTOS WebGL Fallback]:', reason);
     if (canvas)   canvas.style.display = 'none';
     if (fallback) {
       fallback.classList.add('visible');
@@ -125,10 +125,10 @@
         preserveDrawingBuffer: false,
       });
 
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       renderer.setPixelRatio(dpr);
       renderer.setSize(wrap.clientWidth, wrap.clientHeight, false);
-      renderer.setClearColor(0x09090b, 1);
+      renderer.setClearColor(0x000000, 0); // Transparent to blend naturally
 
       // 2. Scene & Camera Setup
       const scene  = new THREE.Scene();
@@ -199,7 +199,7 @@
       // D. Orbital Data Rings
       const ringGroup = new THREE.Group();
 
-      const ringGeo1 = new THREE.TorusGeometry(1.32, 0.003, 16, 120);
+      const ringGeo1 = new THREE.TorusGeometry(1.32, 0.003, 16, 64);
       const ringMat1 = new THREE.MeshBasicMaterial({
         color: 0x0052ff,
         transparent: true,
@@ -210,7 +210,7 @@
       ring1.rotation.y = Math.PI * 0.15;
       ringGroup.add(ring1);
 
-      const ringGeo2 = new THREE.TorusGeometry(1.42, 0.002, 16, 120);
+      const ringGeo2 = new THREE.TorusGeometry(1.42, 0.002, 16, 64);
       const ringMat2 = new THREE.MeshBasicMaterial({
         color: 0x00d2ff,
         transparent: true,
@@ -224,7 +224,7 @@
       scene.add(ringGroup);
 
       // E. Outer Floating Ambient Data Particles
-      const PARTICLE_COUNT = 110;
+      const PARTICLE_COUNT = 60;
       const particlePositions = new Float32Array(PARTICLE_COUNT * 3);
       for (let i = 0; i < PARTICLE_COUNT; i++) {
         const theta = Math.random() * Math.PI * 2;
@@ -535,35 +535,35 @@
       submitted_at:        new Date().toISOString()
     };
 
-    console.log('[NBOS Inquiry] Form submission ready:', formData);
+    console.log('[NTOS Inquiry] Form submission ready:', formData);
 
     // Save to Supabase Database
-    if (window.nbosSupabase) {
+    if (window.ntosSupabase) {
       try {
-        const { error } = await window.nbosSupabase
+        const { error } = await window.ntosSupabase
           .from('inquiries')
           .insert([formData]);
         
         if (error) {
-          console.error('[NBOS] Database insert error:', error);
+          console.error('[NTOS] Database insert error:', error);
         } else {
-          console.log('[NBOS] Form saved to Supabase successfully.');
+          console.log('[NTOS] Form saved to Supabase successfully.');
         }
       } catch (err) {
-        console.error('[NBOS] Database connection failed:', err);
+        console.error('[NTOS] Database connection failed:', err);
       }
     }
 
     // Save lead in localStorage as backup
     try {
-      const savedLeads = JSON.parse(localStorage.getItem('nbos_inquiries') || '[]');
+      const savedLeads = JSON.parse(localStorage.getItem('ntos_inquiries') || '[]');
       savedLeads.push(formData);
-      localStorage.setItem('nbos_inquiries', JSON.stringify(savedLeads));
+      localStorage.setItem('ntos_inquiries', JSON.stringify(savedLeads));
     } catch (e) {
-      console.warn('[NBOS] Local storage save failed', e);
+      console.warn('[NTOS] Local storage save failed', e);
     }
 
-    // Save to local NBOS folder via custom backend server
+    // Save to local NTOS folder via custom backend server
     try {
       await fetch('/api/inquiry', {
         method: 'POST',
@@ -572,9 +572,9 @@
         },
         body: JSON.stringify(formData)
       });
-      console.log('[NBOS] Form saved to local NBOS folder successfully.');
+      console.log('[NTOS] Form saved to local NTOS folder successfully.');
     } catch (err) {
-      console.warn('[NBOS] Failed to save to local server (is server.js running?)', err);
+      console.warn('[NTOS] Failed to save to local server (is server.js running?)', err);
     }
 
     setTimeout(() => {
@@ -606,8 +606,8 @@
 })();
 
 // Helper function to export all leads as CSV anytime
-window.downloadNBOSLeads = function() {
-  const leads = JSON.parse(localStorage.getItem('nbos_inquiries') || '[]');
+window.downloadNTOSLeads = function() {
+  const leads = JSON.parse(localStorage.getItem('ntos_inquiries') || '[]');
   if (!leads.length) {
     alert('Abhi tak koi inquiry receive nahi hui hai.');
     return;
@@ -627,7 +627,7 @@ window.downloadNBOSLeads = function() {
   const encodedUri = encodeURI(csvContent);
   const link = document.createElement('a');
   link.setAttribute('href', encodedUri);
-  link.setAttribute('download', `NBOS_Inquiries_${new Date().toISOString().slice(0,10)}.csv`);
+  link.setAttribute('download', `NTOS_Inquiries_${new Date().toISOString().slice(0,10)}.csv`);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -688,7 +688,7 @@ window.downloadNBOSLeads = function() {
   const plansData = {
     standard: {
       badge: 'Standard Package',
-      title: 'NBOS Standard',
+      title: 'NTOS Standard',
       price: '₹24,999',
       caption: 'Essential online presence for small businesses & startups on a budget.',
       features: [
@@ -706,7 +706,7 @@ window.downloadNBOSLeads = function() {
     },
     growth: {
       badge: '🔥 MOST SELLING — Growth Package',
-      title: 'NBOS Growth',
+      title: 'NTOS Growth',
       price: '₹44,999',
       caption: 'Full-featured custom web applications for scaling companies.',
       features: [
@@ -723,7 +723,7 @@ window.downloadNBOSLeads = function() {
     },
     enterprise: {
       badge: 'Enterprise Ecosystem',
-      title: 'NBOS Enterprise',
+      title: 'NTOS Enterprise',
       price: '₹69,999',
       caption: 'Fully automated enterprise systems, 3D WebGL, AI Chatbot & BI Dashboards for industry leaders.',
       features: [
@@ -741,7 +741,7 @@ window.downloadNBOSLeads = function() {
     },
     'web-custom': {
       badge: 'Custom Web Plan',
-      title: 'NBOS Custom',
+      title: 'NTOS Custom',
       price: 'Custom Pricing',
       caption: 'Tailored web solutions, specialized portals, and bespoke architectures.',
       features: [
@@ -996,7 +996,7 @@ window.downloadNBOSLeads = function() {
   const SUPABASE_URL = 'https://lltblwkbixxpaoahbyli.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxsdGJsd2tiaXh4cGFvYWhieWxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY2Mjg2MzIsImV4cCI6MjEwMjIwNDYzMn0.6N7sTqyncPpS1aMjjnvbIM-pubsrIQ0Y16x6-OcGB84';
   if (window.supabase) {
-    window.nbosSupabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    window.ntosSupabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   }
 
   function clearMessages() {
@@ -1011,7 +1011,7 @@ window.downloadNBOSLeads = function() {
   function renderHistory(email) {
     if (!historySection || !historyList) return;
     
-    const savedLeads = JSON.parse(localStorage.getItem('nbos_inquiries') || '[]');
+    const savedLeads = JSON.parse(localStorage.getItem('ntos_inquiries') || '[]');
     const userHistory = savedLeads.filter(lead => lead.email_address && lead.email_address.toLowerCase() === email.toLowerCase());
     
     if (loggedInEmailDisplay) loggedInEmailDisplay.textContent = email;
@@ -1074,7 +1074,7 @@ window.downloadNBOSLeads = function() {
   }
 
   function simulateLogout() {
-    localStorage.removeItem('nbos_logged_in_user');
+    localStorage.removeItem('ntos_logged_in_user');
     if (authModal) authModal.classList.add('active');
     if (appContent) appContent.style.display = 'none';
     if (btnLogout) btnLogout.style.display = 'none';
@@ -1094,7 +1094,7 @@ window.downloadNBOSLeads = function() {
   }
 
   // Check initial session
-  const loggedInUser = localStorage.getItem('nbos_logged_in_user');
+  const loggedInUser = localStorage.getItem('ntos_logged_in_user');
   if (loggedInUser) {
     simulateLogin(loggedInUser);
   } else {
@@ -1128,7 +1128,7 @@ window.downloadNBOSLeads = function() {
     }
 
     setTimeout(() => {
-      localStorage.setItem('nbos_logged_in_user', email);
+      localStorage.setItem('ntos_logged_in_user', email);
       simulateLogin(email);
       
       if (btnSignIn) {

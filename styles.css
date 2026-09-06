@@ -1,5 +1,5 @@
 /* ============================================================
-   NBOS — Design System
+   NTOS — Design System
    Primary Background: #09090b
    Primary Accent: #0052ff
    Heading Font: Space Grotesk
@@ -1271,13 +1271,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .pricing-tabs {
   display: inline-flex;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-accent);
-  padding: 6px;
-  border-radius: 100px;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(12px);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
 }
 
 .pricing-tab {
@@ -1289,10 +1285,12 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-muted);
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-accent);
   border-radius: 100px;
   cursor: pointer;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -2231,7 +2229,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-headline {
-    font-size: clamp(1.85rem, 7.5vw, 2.75rem);
+    font-size: clamp(1.5rem, 6vw, 2.25rem);
     line-height: 1.15;
   }
 
@@ -2283,11 +2281,24 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .pricing-card-inner {
-    padding: 24px 20px;
+    padding: 16px 16px;
+  }
+  
+  .pricing-name {
+    font-size: 1.15rem;
+  }
+
+  .price-amount {
+    font-size: 1.8rem;
+  }
+
+  .feature-item {
+    font-size: 0.85rem;
+    padding: 6px 0;
   }
 
   .card-inner {
-    padding: 22px 18px;
+    padding: 16px 14px;
   }
 
   .mockup-frame {
@@ -2325,11 +2336,21 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .invoice-document {
-    padding: 24px 18px;
+    padding: 16px 12px;
     border-radius: var(--radius-md);
-    transform: scale(0.85);
+    transform: scale(0.8);
     transform-origin: top center;
-    margin-bottom: -10%;
+    margin-bottom: -15%;
+  }
+  .inv-title {
+    font-size: 1.1rem;
+  }
+  .inv-body {
+    padding: 12px 0;
+  }
+  .inv-row {
+    font-size: 0.75rem;
+    padding: 6px 0;
   }
 
   .inv-header {
@@ -2398,9 +2419,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .invoice-document {
-    transform: scale(0.7);
+    transform: scale(0.65);
     transform-origin: top center;
-    margin-bottom: -20%;
+    margin-bottom: -30%;
   }
 
   .section-title {
