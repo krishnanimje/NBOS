@@ -120,7 +120,7 @@
       const renderer = new THREE.WebGLRenderer({
         canvas,
         antialias: !isMobile,
-        alpha: false,
+        alpha: true,
         powerPreference: 'high-performance',
         preserveDrawingBuffer: false,
       });
@@ -1161,4 +1161,53 @@ window.downloadNTOSLeads = function() {
       splash.remove();
     }, 1800);
   }
+})();
+/* ============================================================
+   CUSTOM DROPDOWN LOGIC
+============================================================ */
+(function initCustomDropdown() {
+  const wrap = document.getElementById('custom-package-dropdown');
+  const trigger = document.getElementById('dropdown-trigger');
+  const selectedText = document.getElementById('dropdown-selected-text');
+  const hiddenSelect = document.getElementById('package-select');
+  const options = document.querySelectorAll('.dropdown-option');
+
+  if (!wrap || !trigger || !hiddenSelect) return;
+
+  trigger.addEventListener('click', () => {
+    wrap.classList.toggle('open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!wrap.contains(e.target)) {
+      wrap.classList.remove('open');
+    }
+  });
+
+  options.forEach(opt => {
+    opt.addEventListener('click', () => {
+      const val = opt.getAttribute('data-value');
+      const text = opt.textContent;
+      
+      selectedText.textContent = text;
+      selectedText.style.color = '#fff';
+      options.forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      
+      hiddenSelect.value = val;
+      hiddenSelect.dispatchEvent(new Event('change'));
+      wrap.classList.remove('open');
+    });
+  });
+
+  hiddenSelect.addEventListener('change', () => {
+    const val = hiddenSelect.value;
+    const correspondingOpt = document.querySelector(.dropdown-option[data-value="$val"]);
+    if (correspondingOpt) {
+      selectedText.textContent = correspondingOpt.textContent;
+      selectedText.style.color = '#fff';
+      options.forEach(o => o.classList.remove('selected'));
+      correspondingOpt.classList.add('selected');
+    }
+  });
 })();

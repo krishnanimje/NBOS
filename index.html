@@ -378,6 +378,47 @@
     </section>
 
     <!-- ============================================================
+         REFERENCE GALLERY
+    ============================================================ -->
+    <section class="gallery" id="gallery" aria-labelledby="gallery-heading">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <div class="section-eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Portfolio</span>
+          </div>
+          <h2 class="section-title" id="gallery-heading">Reference Websites</h2>
+          <p class="section-body">
+            Explore our curated selection of high-end reference architectures and industry benchmarks.
+          </p>
+        </div>
+
+        <div class="gallery-grid" data-reveal>
+          <div class="gallery-item">
+            <div class="gallery-img-placeholder">
+              <span>Image 1 (Insert Reference Here)</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-img-placeholder">
+              <span>Image 2 (Insert Reference Here)</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-img-placeholder">
+              <span>Image 3 (Insert Reference Here)</span>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-img-placeholder">
+              <span>Image 4 (Insert Reference Here)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
          SCREEN 3 — PRICING & INQUIRY FORM
     ============================================================ -->
     <section class="pricing" id="pricing" aria-labelledby="pricing-heading">
@@ -845,35 +886,44 @@
                 <label class="form-label" for="package-select">
                   Choose Packages <span class="required-mark" aria-label="required">*</span>
                 </label>
-                <div class="select-wrap">
-                  <select
-                    id="package-select"
-                    name="package"
-                    class="form-select"
-                    required
-                    aria-required="true"
-                    aria-describedby="package-select-error"
-                  >
+                <div class="custom-dropdown-wrap" id="custom-package-dropdown">
+                  <div class="custom-dropdown-trigger" tabindex="0" id="dropdown-trigger">
+                    <span id="dropdown-selected-text">Select a package</span>
+                    <span class="select-arrow" aria-hidden="true">↓</span>
+                  </div>
+                  <div class="custom-dropdown-menu" id="dropdown-menu">
+                    <div class="dropdown-group">Website &amp; Systems</div>
+                    <div class="dropdown-option" data-value="standard">NTOS Standard — ₹24,999</div>
+                    <div class="dropdown-option" data-value="growth">NTOS Growth — ₹44,999</div>
+                    <div class="dropdown-option" data-value="enterprise">NTOS Enterprise — ₹69,999</div>
+                    <div class="dropdown-option" data-value="web-custom">Custom Web Plan — Custom Pricing</div>
+                    
+                    <div class="dropdown-group">AI &amp; Automation (Monthly)</div>
+                    <div class="dropdown-option" data-value="ai-starter">AI Starter — ₹14,999 / Mo</div>
+                    <div class="dropdown-option" data-value="ai-growth">AI Growth — ₹29,999 / Mo</div>
+                    <div class="dropdown-option" data-value="ai-pro">AI Pro — ₹49,999 / Mo</div>
+                    <div class="dropdown-option" data-value="ai-custom">AI Custom / Enterprise — Custom</div>
+                    
+                    <div class="dropdown-group">Maintenance &amp; Care (Monthly)</div>
+                    <div class="dropdown-option" data-value="maint-basic">Basic Care — ₹4,999 / Mo</div>
+                    <div class="dropdown-option" data-value="maint-tech">Tech &amp; Bot Support — ₹9,999 / Mo</div>
+                    <div class="dropdown-option" data-value="maint-allinone">All-In-One Management — ₹19,999 / Mo</div>
+                  </div>
+                  
+                  <select id="package-select" name="package" style="display: none;" required aria-required="true" aria-describedby="package-select-error">
                     <option value="" disabled selected>Select a package</option>
-                    <optgroup label="Website &amp; Systems">
-                      <option value="standard">NTOS Standard — ₹24,999</option>
-                      <option value="growth">NTOS Growth — ₹44,999</option>
-                      <option value="enterprise">NTOS Enterprise — ₹69,999</option>
-                      <option value="web-custom">Custom Web Plan — Custom Pricing</option>
-                    </optgroup>
-                    <optgroup label="AI &amp; Automation (Monthly)">
-                      <option value="ai-starter">AI Starter — ₹14,999 / Mo</option>
-                      <option value="ai-growth">AI Growth — ₹29,999 / Mo</option>
-                      <option value="ai-pro">AI Pro — ₹49,999 / Mo</option>
-                      <option value="ai-custom">AI Custom / Enterprise — Custom</option>
-                    </optgroup>
-                    <optgroup label="Maintenance &amp; Care (Monthly)">
-                      <option value="maint-basic">Basic Care — ₹4,999 / Mo</option>
-                      <option value="maint-tech">Tech &amp; Bot Support — ₹9,999 / Mo</option>
-                      <option value="maint-allinone">All-In-One Management — ₹19,999 / Mo</option>
-                    </optgroup>
+                    <option value="standard">NTOS Standard — ₹24,999</option>
+                    <option value="growth">NTOS Growth — ₹44,999</option>
+                    <option value="enterprise">NTOS Enterprise — ₹69,999</option>
+                    <option value="web-custom">Custom Web Plan — Custom Pricing</option>
+                    <option value="ai-starter">AI Starter — ₹14,999 / Mo</option>
+                    <option value="ai-growth">AI Growth — ₹29,999 / Mo</option>
+                    <option value="ai-pro">AI Pro — ₹49,999 / Mo</option>
+                    <option value="ai-custom">AI Custom / Enterprise — Custom</option>
+                    <option value="maint-basic">Basic Care — ₹4,999 / Mo</option>
+                    <option value="maint-tech">Tech &amp; Bot Support — ₹9,999 / Mo</option>
+                    <option value="maint-allinone">All-In-One Management — ₹19,999 / Mo</option>
                   </select>
-                  <span class="select-arrow" aria-hidden="true">↓</span>
                 </div>
                 <span class="form-error" id="package-select-error" role="alert" aria-live="polite"></span>
               </div>
