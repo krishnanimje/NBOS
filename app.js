@@ -1202,7 +1202,7 @@ window.downloadNTOSLeads = function() {
 
   hiddenSelect.addEventListener('change', () => {
     const val = hiddenSelect.value;
-    const correspondingOpt = document.querySelector(.dropdown-option[data-value="$val"]);
+    const correspondingOpt = document.querySelector(`.dropdown-option[data-value="${val}"]`);
     if (correspondingOpt) {
       selectedText.textContent = correspondingOpt.textContent;
       selectedText.style.color = '#fff';
