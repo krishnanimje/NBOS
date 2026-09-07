@@ -119,13 +119,13 @@
       const isMobile = window.innerWidth < 768;
       const renderer = new THREE.WebGLRenderer({
         canvas,
-        antialias: !isMobile,
+        antialias: true,
         alpha: true,
         powerPreference: 'high-performance',
         preserveDrawingBuffer: false,
       });
 
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       renderer.setPixelRatio(dpr);
       renderer.setSize(wrap.clientWidth, wrap.clientHeight, false);
       renderer.setClearColor(0x000000, 0); // Transparent to blend naturally
@@ -143,16 +143,16 @@
       // Helper: Generate soft glowing dot texture for node vertices
       function createDotTexture() {
         const c = document.createElement('canvas');
-        c.width = 64;
-        c.height = 64;
+        c.width = 256;
+        c.height = 256;
         const ctx = c.getContext('2d');
-        const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+        const grad = ctx.createRadialGradient(128, 128, 0, 128, 128, 128);
         grad.addColorStop(0.0, 'rgba(0, 162, 255, 1.0)');
         grad.addColorStop(0.3, 'rgba(0, 82, 255, 0.85)');
         grad.addColorStop(0.6, 'rgba(0, 82, 255, 0.35)');
         grad.addColorStop(1.0, 'rgba(0, 0, 0, 0.0)');
         ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, 64, 64);
+        ctx.fillRect(0, 0, 256, 256);
         return new THREE.CanvasTexture(c);
       }
 
@@ -161,7 +161,7 @@
       // 3. Geodesic Matrix Geometries & Materials
 
       // A. Outer Geodesic Triangulated Matrix Grid
-      const geoOuter = new THREE.IcosahedronGeometry(1.08, 2);
+      const geoOuter = new THREE.IcosahedronGeometry(1.08, 3);
       const matOuter = new THREE.MeshBasicMaterial({
         color: 0x0052ff,
         wireframe: true,
@@ -172,7 +172,7 @@
       scene.add(meshOuter);
 
       // B. Inner Counter-Rotating Geodesic Core
-      const geoInner = new THREE.IcosahedronGeometry(0.68, 1);
+      const geoInner = new THREE.IcosahedronGeometry(0.68, 2);
       const matInner = new THREE.MeshBasicMaterial({
         color: 0x00d2ff,
         wireframe: true,
@@ -199,7 +199,7 @@
       // D. Orbital Data Rings
       const ringGroup = new THREE.Group();
 
-      const ringGeo1 = new THREE.TorusGeometry(1.32, 0.003, 16, 64);
+      const ringGeo1 = new THREE.TorusGeometry(1.32, 0.003, 16, 100);
       const ringMat1 = new THREE.MeshBasicMaterial({
         color: 0x0052ff,
         transparent: true,

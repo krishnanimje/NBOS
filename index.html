@@ -435,7 +435,7 @@
           </p>
         </div>
 
-        <!-- Segmented Tab Nav -->
+                <!-- Segmented Tab Nav -->
         <div class="pricing-tabs-wrapper" data-reveal>
           <div class="pricing-tabs" role="tablist" aria-label="Pricing category tabs">
             <button class="pricing-tab active" role="tab" id="tab-web" aria-selected="true" aria-controls="panel-web">
@@ -444,7 +444,7 @@
             <button class="pricing-tab" role="tab" id="tab-ai" aria-selected="false" aria-controls="panel-ai">
               <span class="tab-icon">🤖</span> AI
             </button>
-            <button class="pricing-tab" role="tab" id="tab-auto" aria-selected="false" aria-controls="panel-ai">
+            <button class="pricing-tab" role="tab" id="tab-auto" aria-selected="false" aria-controls="panel-auto">
               <span class="tab-icon">⚙️</span> Automation
             </button>
             <button class="pricing-tab" role="tab" id="tab-maint" aria-selected="false" aria-controls="panel-maint">
@@ -453,126 +453,179 @@
           </div>
         </div>
 
-        <!-- Tab Panel 1: Website & Systems (3 Cards) -->
+        <!-- Tab Panel 1: Website & Systems (5 Cards) -->
         <div class="tab-panel active" id="panel-web" role="tabpanel" aria-labelledby="tab-web" data-reveal>
-          <div class="pricing-grid pricing-grid-4">
-            <!-- Web Card 1: Standard -->
-            <div class="pricing-card pricing-card-premium" id="plan-standard" aria-labelledby="plan-standard-title">
+          <div class="pricing-grid">
+            
+            <!-- Web 1: Starter -->
+            <div class="pricing-card pricing-card-premium" id="plan-web-starter">
               <div class="pricing-card-inner">
                 <div class="pricing-header">
-                  <div class="pricing-badge pricing-badge-premium">Standard</div>
-                  <h3 class="pricing-name" id="plan-standard-title">NTOS Standard</h3>
+                  <div class="pricing-badge pricing-badge-premium">Starter</div>
+                  <h3 class="pricing-name">NTOS Starter</h3>
                   <div class="pricing-price">
                     <span class="price-currency">₹</span>
-                    <span class="price-amount">24,999</span>
+                    <span class="price-amount">20,000</span>
                   </div>
-                  <p class="pricing-caption">Essential online presence for small businesses &amp; startups on a budget.</p>
+                  <div class="price-period">/Project</div>
+                  <p class="pricing-caption">For small businesses, local businesses, professionals and startups that need a professional online presence.</p>
                 </div>
-                <ul class="pricing-features" aria-label="Standard plan features">
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Basic Multi-Page / Landing Page Website</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> No-Code / Template-Based Architecture</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Standard UI/UX Layout</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Mobile &amp; Tablet Responsive Implementation</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Standard Deployment &amp; Hosting Setup</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> 7-Day Post-Launch Support</li>
-                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> Custom UI/UX Engineering</li>
-                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> Custom Web Application Dev</li>
-                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> 3D / WebGL Integration</li>
-                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> AI Chatbot &amp; BI Dashboard</li>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Professional business website</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Up to 5 core pages</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Mobile, tablet &amp; desktop responsive design</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Modern premium UI/UX</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Contact &amp; enquiry forms</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> WhatsApp integration</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Google Maps integration</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Social media integration</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Basic SEO setup</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Performance optimization</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> SSL-ready deployment</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Basic analytics setup</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 7-day post-launch support</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select NTOS Standard plan">Select Standard</a>
-                <div class="premium-glow-border" aria-hidden="true"></div>
+                <a href="#contact" class="btn btn-primary btn-full">Get Started</a>
+                <div class="premium-glow-border"></div>
               </div>
             </div>
 
-            <!-- Web Card 2: Growth (Featured) -->
-            <div class="pricing-card pricing-card-premium pricing-card-featured" id="plan-growth" aria-labelledby="plan-growth-title">
+            <!-- Web 2: Growth -->
+            <div class="pricing-card pricing-card-premium pricing-card-featured" id="plan-web-growth">
               <div class="pricing-card-inner">
                 <div class="pricing-header">
                   <div class="pricing-badge-row">
-                    <span class="most-selling-badge">🔥 MOST SELLING</span>
+                    <span class="most-selling-badge">🔥 MOST POPULAR</span>
                     <span class="pricing-badge pricing-badge-premium">Growth</span>
                   </div>
-                  <h3 class="pricing-name" id="plan-growth-title">NTOS Growth</h3>
+                  <h3 class="pricing-name">NTOS Growth</h3>
                   <div class="pricing-price">
                     <span class="price-currency">₹</span>
-                    <span class="price-amount">44,999</span>
+                    <span class="price-amount">39,999</span>
                   </div>
-                  <p class="pricing-caption">Full-featured custom web applications for scaling companies.</p>
+                  <div class="price-period">/Project</div>
+                  <p class="pricing-caption">For growing businesses that need a stronger digital presence and better conversion-focused website.</p>
                 </div>
-                <ul class="pricing-features" aria-label="Growth plan features">
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Fully Detailed Custom Website &amp; Web Application</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Custom UI/UX Engineering &amp; High-End Prototyping</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> 5 AI-Powered Marketing Posters</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Mobile &amp; Tablet Responsive Implementation</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Secure Cloud Deployment &amp; Hosting Setup</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> 14-Day Post-Launch Support</li>
-                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> 3D / WebGL Integration</li>
-                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> AI Chatbot &amp; BI Dashboard</li>
-                  <li class="feature-item excluded" aria-label="Not included"><span class="feature-x" aria-hidden="true">–</span> Google Ads &amp; Meta Ads</li>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Everything in NTOS Starter</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Up to 10 pages</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom UI/UX design</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Conversion-focused landing sections</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced contact/enquiry system</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> WhatsApp lead integration</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Google Business integration</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced SEO structure</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Speed optimization</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Analytics &amp; conversion tracking</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Lead capture optimization</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Blog/news section</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Professional animations &amp; micro-interactions</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 14-day post-launch support</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select NTOS Growth plan">Select Growth</a>
-                <div class="premium-glow-border" aria-hidden="true"></div>
+                <a href="#contact" class="btn btn-primary btn-full">Choose Growth</a>
+                <div class="premium-glow-border"></div>
               </div>
             </div>
 
-            <!-- Web Card 3: Enterprise -->
-            <div class="pricing-card pricing-card-premium" id="plan-enterprise" aria-labelledby="plan-enterprise-title">
+            <!-- Web 3: Professional -->
+            <div class="pricing-card pricing-card-premium" id="plan-web-pro">
               <div class="pricing-card-inner">
                 <div class="pricing-header">
-                  <div class="pricing-badge pricing-badge-premium">Enterprise</div>
-                  <h3 class="pricing-name" id="plan-enterprise-title">NTOS Enterprise</h3>
+                  <div class="pricing-badge pricing-badge-premium">PRO</div>
+                  <h3 class="pricing-name">NTOS Professional</h3>
                   <div class="pricing-price">
                     <span class="price-currency">₹</span>
                     <span class="price-amount">69,999</span>
                   </div>
-                  <p class="pricing-caption">Fully automated enterprise systems, 3D WebGL, AI Chatbot &amp; BI Dashboards for industry leaders.</p>
+                  <div class="price-period">/Project</div>
+                  <p class="pricing-caption">For established businesses requiring a premium custom website with advanced functionality.</p>
                 </div>
-                <ul class="pricing-features" aria-label="Enterprise plan features">
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Everything in Standard &amp; Growth</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Full E-Commerce &amp; Online Store Engine</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> 3D / WebGL Interactive Experience</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> AI Chatbot Integration</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Detailed Business Intelligence (BI) Dashboard</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Google Ads Campaign Management</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Meta Ads Campaign Management</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Priority Deployment (72-Hour Delivery Target)</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> 30-Day Post-Launch Support</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Dedicated Project Architect</li>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Everything in NTOS Growth</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Fully custom website experience</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced UI/UX architecture</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom interactive sections</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced forms &amp; lead workflows</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Customer enquiry management</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> CMS/content management capability</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced SEO implementation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced analytics</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Performance optimization</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Premium animations</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Third-party integrations</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom business functionality</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Priority deployment</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 30-day post-launch support</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select NTOS Enterprise plan">Select Enterprise</a>
-                <div class="premium-glow-border" aria-hidden="true"></div>
+                <a href="#contact" class="btn btn-primary btn-full">Choose Professional</a>
+                <div class="premium-glow-border"></div>
               </div>
             </div>
 
-            <!-- Web Card 4: Custom -->
-            <div class="pricing-card pricing-card-premium" id="plan-web-custom" aria-labelledby="plan-web-custom-title">
+            <!-- Web 4: Enterprise -->
+            <div class="pricing-card pricing-card-premium" id="plan-web-enterprise">
               <div class="pricing-card-inner">
                 <div class="pricing-header">
-                  <div class="pricing-badge pricing-badge-premium">Custom</div>
-                  <h3 class="pricing-name" id="plan-web-custom-title">Custom Web Plan</h3>
+                  <div class="pricing-badge pricing-badge-premium">ENTERPRISE</div>
+                  <h3 class="pricing-name">NTOS Enterprise</h3>
                   <div class="pricing-price">
-                    <span class="price-amount" style="font-size: 1.75rem;">Custom</span>
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">1,19,999</span>
                   </div>
-                  <p class="pricing-caption">Tailored web solutions, specialized portals, and bespoke architectures.</p>
+                  <div class="price-period">/Project</div>
+                  <p class="pricing-caption">For established companies, brands and organizations requiring a scalable digital platform.</p>
                 </div>
-                <ul class="pricing-features" aria-label="Custom Web plan features">
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Fully Bespoke UI/UX Design</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Complex Web Application Features</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Custom Integrations (API, ERP, CRM)</li>
-                  <li class="feature-item included"><span class="feature-check" aria-hidden="true">✓</span> Dedicated Project Manager &amp; Dev Team</li>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Everything in NTOS Professional</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Enterprise-grade UI/UX</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced web application functionality</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom dashboards where required</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced API integrations</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> CRM/ERP integration capability</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> E-commerce functionality where required</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced authentication/user systems</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom business workflows</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced analytics dashboard</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> High-performance architecture</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Scalable deployment architecture</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Dedicated project management</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Priority support</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> 30-day post-launch support</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select Custom Web plan">Contact Enterprise</a>
-                <div class="premium-glow-border" aria-hidden="true"></div>
+                <a href="#contact" class="btn btn-primary btn-full">Contact Enterprise</a>
+                <div class="premium-glow-border"></div>
               </div>
             </div>
+
+            <!-- Web 5: Custom -->
+            <div class="pricing-card pricing-card-premium" id="plan-web-custom">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">CUSTOM</div>
+                  <h3 class="pricing-name">Custom Digital Solution</h3>
+                  <div class="pricing-price">
+                    <span class="price-amount" style="font-size: 2rem;">Custom</span>
+                  </div>
+                  <div class="price-period">/Project</div>
+                  <p class="pricing-caption">Built around your exact business requirements.</p>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Discovery &amp; Scope Strategy</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom Engineering</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Dedicated Delivery Team</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full">Talk to NTOS</a>
+                <div class="premium-glow-border"></div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <!-- Tab Panel 2: AI & Automation (4 Cards) -->
+        <!-- Tab Panel 2: AI Solutions (5 Cards) -->
         <div class="tab-panel" id="panel-ai" role="tabpanel" aria-labelledby="tab-ai">
-          <div class="pricing-grid pricing-grid-4">
-            <!-- AI Card 1: AI Starter -->
+          <div class="pricing-grid">
+            
             <div class="pricing-card pricing-card-premium" id="plan-ai-starter">
               <div class="pricing-card-inner">
                 <div class="pricing-header">
@@ -580,24 +633,25 @@
                   <h3 class="pricing-name">AI Starter</h3>
                   <div class="pricing-price">
                     <span class="price-currency">₹</span>
-                    <span class="price-amount">14,999</span>
-                    <span class="price-period">/ Mo</span>
+                    <span class="price-amount">19,999</span>
                   </div>
-                  <p class="pricing-caption">Ideal for businesses initiating online marketing &amp; automated responses.</p>
+                  <div class="price-period">/month</div>
                 </div>
                 <ul class="pricing-features">
-                  <li class="feature-item included"><span class="feature-check">✓</span> Basic WhatsApp &amp; Insta Automation (Welcome &amp; FAQ Bot)</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 8 AI Social Media Posters / Month</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 2 AI UGC Videos (Reels &amp; Shorts)</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 1 Basic Email Automation Sequence</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Standard Technical Support</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> WhatsApp AI automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Basic AI chatbot</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> FAQ automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Lead capture automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Basic social media automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Basic email automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Monthly optimization</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Standard technical support</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select AI Starter plan">Select AI Starter</a>
-                <div class="premium-glow-border" aria-hidden="true"></div>
+                <a href="#contact" class="btn btn-primary btn-full">Select Starter</a>
+                <div class="premium-glow-border"></div>
               </div>
             </div>
 
-            <!-- AI Card 2: AI Growth (Featured / Most Popular) -->
             <div class="pricing-card pricing-card-premium pricing-card-featured" id="plan-ai-growth">
               <div class="pricing-card-inner">
                 <div class="pricing-header">
@@ -608,157 +662,342 @@
                   <h3 class="pricing-name">AI Growth</h3>
                   <div class="pricing-price">
                     <span class="price-currency">₹</span>
-                    <span class="price-amount">29,999</span>
-                    <span class="price-period">/ Mo</span>
+                    <span class="price-amount">39,999</span>
                   </div>
-                  <p class="pricing-caption">For growing businesses needing qualified leads, ad campaigns &amp; sales.</p>
+                  <div class="price-period">/month</div>
                 </div>
                 <ul class="pricing-features">
-                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced WhatsApp &amp; Insta Chatbot (Lead Gen)</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 1 Ad Campaign Setup &amp; Management (FB/Insta)</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 15 Custom AI Posters / Month</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 4 High-Quality AI UGC Videos</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced Email Marketing (Cart &amp; Newsletter)</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Monthly Performance &amp; ROI Report</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Everything in AI Starter</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced WhatsApp automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> AI lead qualification</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Instagram automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> AI content assistance</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Lead follow-up automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Email marketing automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> CRM lead synchronization</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Monthly performance report</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Priority technical support</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select AI Growth plan">Select AI Growth</a>
-                <div class="premium-glow-border" aria-hidden="true"></div>
+                <a href="#contact" class="btn btn-primary btn-full">Select Growth</a>
+                <div class="premium-glow-border"></div>
               </div>
             </div>
 
-            <!-- AI Card 3: AI Pro -->
             <div class="pricing-card pricing-card-premium" id="plan-ai-pro">
               <div class="pricing-card-inner">
                 <div class="pricing-header">
-                  <div class="pricing-badge pricing-badge-premium">Pro</div>
+                  <div class="pricing-badge pricing-badge-premium">PRO</div>
                   <h3 class="pricing-name">AI Pro</h3>
                   <div class="pricing-price">
                     <span class="price-currency">₹</span>
-                    <span class="price-amount">49,999</span>
-                    <span class="price-period">/ Mo</span>
+                    <span class="price-amount">69,999</span>
                   </div>
-                  <p class="pricing-caption">Full-scale multi-channel marketing &amp; CRM integration for brands.</p>
+                  <div class="price-period">/month</div>
                 </div>
                 <ul class="pricing-features">
-                  <li class="feature-item included"><span class="feature-check">✓</span> Multi-Channel Automation (WhatsApp + Insta + Email)</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 2-3 Paid Ad Campaigns (with A/B Testing)</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 30 AI Posters / Month (Daily Posting)</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 8 to 10 AI UGC Videos (Viral Hooks)</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Direct CRM Integration (Instant Lead Sync)</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Everything in AI Growth</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Multi-channel AI automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> WhatsApp + Instagram + Email workflows</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced lead generation automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced CRM integration</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> AI-powered business workflows</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom chatbot workflows</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced reporting</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Dedicated automation optimization</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Priority support</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select AI Pro plan">Select AI Pro</a>
-                <div class="premium-glow-border" aria-hidden="true"></div>
+                <a href="#contact" class="btn btn-primary btn-full">Select Pro</a>
+                <div class="premium-glow-border"></div>
               </div>
             </div>
 
-            <!-- AI Card 4: AI Custom / Enterprise -->
+            <div class="pricing-card pricing-card-premium" id="plan-ai-enterprise">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">ENTERPRISE</div>
+                  <h3 class="pricing-name">AI Enterprise</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">1,49,999</span>
+                  </div>
+                  <div class="price-period">/month</div>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Fully customized AI architecture</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced multi-channel automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom AI workflows</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Enterprise CRM/ERP integrations</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom business automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced AI agents</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom reporting systems</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Dedicated automation specialist</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Priority infrastructure</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Dedicated project management</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Enterprise support</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full">Contact NTOS</a>
+                <div class="premium-glow-border"></div>
+              </div>
+            </div>
+
             <div class="pricing-card pricing-card-premium" id="plan-ai-custom">
               <div class="pricing-card-inner">
                 <div class="pricing-header">
-                  <div class="pricing-badge pricing-badge-premium">Custom</div>
-                  <h3 class="pricing-name">AI Custom</h3>
+                  <div class="pricing-badge pricing-badge-premium">CUSTOM</div>
+                  <h3 class="pricing-name">Custom AI Solution</h3>
                   <div class="pricing-price">
-                    <span class="price-amount" style="font-size: 1.75rem;">Custom</span>
+                    <span class="price-amount" style="font-size: 2rem;">Custom</span>
                   </div>
-                  <p class="pricing-caption">Tailored AI models, dedicated workflows &amp; enterprise scale.</p>
+                  <div class="price-period">/month</div>
                 </div>
                 <ul class="pricing-features">
-                  <li class="feature-item included"><span class="feature-check">✓</span> Fully Customized AI &amp; Automation Architecture</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Unlimited Graphic Designs &amp; Video Production</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Dedicated AI Automation Specialist</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 24/7 SLA Priority Infrastructure</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Tailored Architecture</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Enterprise Security</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom SLAs</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select AI Custom plan">Contact Enterprise</a>
-                <div class="premium-glow-border" aria-hidden="true"></div>
+                <a href="#contact" class="btn btn-primary btn-full">Contact NTOS</a>
+                <div class="premium-glow-border"></div>
               </div>
             </div>
+
           </div>
         </div>
 
-        <!-- Tab Panel 3: Maintenance & Care (3 Cards) -->
-        <div class="tab-panel" id="panel-maint" role="tabpanel" aria-labelledby="tab-maint">
+        <!-- Tab Panel 3: Automation (4 Cards) -->
+        <div class="tab-panel" id="panel-auto" role="tabpanel" aria-labelledby="tab-auto">
           <div class="pricing-grid">
-            <!-- Care Card 1: Basic Care -->
-            <div class="pricing-card pricing-card-premium" id="plan-maint-basic">
+            
+            <div class="pricing-card pricing-card-premium" id="plan-auto-starter">
               <div class="pricing-card-inner">
                 <div class="pricing-header">
-                  <div class="pricing-badge pricing-badge-premium">Basic</div>
-                  <h3 class="pricing-name">Basic Care</h3>
+                  <div class="pricing-badge pricing-badge-premium">Starter</div>
+                  <h3 class="pricing-name">Automation Starter</h3>
                   <div class="pricing-price">
                     <span class="price-currency">₹</span>
-                    <span class="price-amount">4,999</span>
-                    <span class="price-period">/ Mo</span>
+                    <span class="price-amount">24,999</span>
                   </div>
-                  <p class="pricing-caption">Website maintenance, hosting management &amp; monthly backups.</p>
+                  <div class="price-period">/month</div>
                 </div>
                 <ul class="pricing-features">
-                  <li class="feature-item included"><span class="feature-check">✓</span> Website Hosting &amp; Domain Management</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Monthly Website &amp; Database Backups</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Software &amp; Core Plugin Updates</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Bug Fixing &amp; Uptime Monitoring</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 1-2 Small Content/Image Edits / Month</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> WhatsApp automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Basic lead automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Enquiry routing</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Automated notifications</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Basic email workflows</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Basic CRM workflow</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Monthly optimization</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select Basic Care plan">Select Basic Care</a>
-                <div class="premium-glow-border" aria-hidden="true"></div>
+                <a href="#contact" class="btn btn-primary btn-full">Select Starter</a>
+                <div class="premium-glow-border"></div>
               </div>
             </div>
 
-            <!-- Care Card 2: Tech & Bot Support (Featured / Most Selling) -->
-            <div class="pricing-card pricing-card-premium pricing-card-featured" id="plan-maint-tech">
+            <div class="pricing-card pricing-card-premium pricing-card-featured" id="plan-auto-growth">
               <div class="pricing-card-inner">
                 <div class="pricing-header">
                   <div class="pricing-badge-row">
-                    <span class="most-selling-badge">🔥 MOST SELLING</span>
-                    <span class="pricing-badge pricing-badge-premium">Tech &amp; Bot</span>
+                    <span class="most-selling-badge">🔥 MOST POPULAR</span>
+                    <span class="pricing-badge pricing-badge-premium">Growth</span>
                   </div>
-                  <h3 class="pricing-name">Tech &amp; Bot Support</h3>
+                  <h3 class="pricing-name">Automation Growth</h3>
                   <div class="pricing-price">
                     <span class="price-currency">₹</span>
-                    <span class="price-amount">9,999</span>
-                    <span class="price-period">/ Mo</span>
+                    <span class="price-amount">49,999</span>
                   </div>
-                  <p class="pricing-caption">Full website care + WhatsApp &amp; Insta bot uptime monitoring.</p>
+                  <div class="price-period">/month</div>
                 </div>
                 <ul class="pricing-features">
-                  <li class="feature-item included"><span class="feature-check">✓</span> All Basic Care Features Included</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> WhatsApp &amp; Insta Bot Active Uptime Monitoring</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 1-2 Monthly Automation Flow Updates (Reply Edits)</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Weekly Database Backups</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Priority Technical Support</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Everything in Starter</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced WhatsApp workflows</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Lead qualification</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Follow-up automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Instagram automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> CRM automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Email automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Multi-step workflows</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Monthly reporting</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Priority support</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select Tech &amp; Bot Support plan">Select Tech &amp; Bot Support</a>
-                <div class="premium-glow-border" aria-hidden="true"></div>
+                <a href="#contact" class="btn btn-primary btn-full">Select Growth</a>
+                <div class="premium-glow-border"></div>
               </div>
             </div>
 
-            <!-- Care Card 3: All-In-One Management -->
-            <div class="pricing-card pricing-card-premium" id="plan-maint-allinone">
+            <div class="pricing-card pricing-card-premium" id="plan-auto-pro">
               <div class="pricing-card-inner">
                 <div class="pricing-header">
-                  <div class="pricing-badge pricing-badge-premium">All-In-One</div>
-                  <h3 class="pricing-name">All-In-One Management</h3>
+                  <div class="pricing-badge pricing-badge-premium">PRO</div>
+                  <h3 class="pricing-name">Automation Pro</h3>
                   <div class="pricing-price">
                     <span class="price-currency">₹</span>
-                    <span class="price-amount">19,999</span>
-                    <span class="price-period">/ Mo</span>
+                    <span class="price-amount">89,999</span>
                   </div>
-                  <p class="pricing-caption">24/7 total system management, speed optimization &amp; dedicated manager.</p>
+                  <div class="price-period">/month</div>
                 </div>
                 <ul class="pricing-features">
-                  <li class="feature-item included"><span class="feature-check">✓</span> Daily Website Backup &amp; Advanced Security</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Unlimited Small Automation &amp; Campaign Updates</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Adding New Services / Products to Website</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> Server Speed &amp; Database Optimization</li>
-                  <li class="feature-item included"><span class="feature-check">✓</span> 24/7 Instant Support &amp; Dedicated Manager</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Everything in Growth</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Multi-channel automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced CRM workflows</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced lead management</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> API integrations</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Business process automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom workflow architecture</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced reporting</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Dedicated automation optimization</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary btn-full" aria-label="Select All-In-One Management plan">Select All-In-One</a>
-                <div class="premium-glow-border" aria-hidden="true"></div>
+                <a href="#contact" class="btn btn-primary btn-full">Select Pro</a>
+                <div class="premium-glow-border"></div>
               </div>
             </div>
+
+            <div class="pricing-card pricing-card-premium" id="plan-auto-enterprise">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">ENTERPRISE</div>
+                  <h3 class="pricing-name">Automation Enterprise</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">1,49,999</span>
+                  </div>
+                  <div class="price-period">/month</div>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Enterprise automation architecture</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom API integrations</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> CRM + ERP workflows</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced multi-channel automation</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom business processes</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Dedicated automation specialist</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Dedicated project management</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Priority support</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full">Contact NTOS</a>
+                <div class="premium-glow-border"></div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <!-- History Section (Dynamically Populated) -->
+        <!-- Tab Panel 4: Maintenance (4 Cards) -->
+        <div class="tab-panel" id="panel-maint" role="tabpanel" aria-labelledby="tab-maint">
+          <div class="pricing-grid">
+            
+            <div class="pricing-card pricing-card-premium" id="plan-care">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">Care</div>
+                  <h3 class="pricing-name">NTOS Care</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">7,999</span>
+                  </div>
+                  <div class="price-period">/month</div>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Website monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Hosting &amp; domain management</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Monthly backups</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Security monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Software/core updates</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Bug fixing</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Up to 2 small content/image updates per month</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Standard support</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full">Select Care</a>
+                <div class="premium-glow-border"></div>
+              </div>
+            </div>
+
+            <div class="pricing-card pricing-card-premium pricing-card-featured" id="plan-care-plus">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge-row">
+                    <span class="most-selling-badge">🔥 MOST POPULAR</span>
+                    <span class="pricing-badge pricing-badge-premium">Plus</span>
+                  </div>
+                  <h3 class="pricing-name">NTOS Care Plus</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">14,999</span>
+                  </div>
+                  <div class="price-period">/month</div>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Everything in NTOS Care</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Weekly backups</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced security monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Performance optimization</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Up to 5 content/image updates</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Minor design adjustments</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Basic automation monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Priority technical support</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full">Select Care Plus</a>
+                <div class="premium-glow-border"></div>
+              </div>
+            </div>
+
+            <div class="pricing-card pricing-card-premium" id="plan-care-total">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">Total</div>
+                  <h3 class="pricing-name">NTOS Total</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">24,999</span>
+                  </div>
+                  <div class="price-period">/month</div>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Everything in Care Plus</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Daily backup monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced performance optimization</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced security monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Website health monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> More frequent content/product updates</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Automation monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Database optimization</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Priority support</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Monthly website health report</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full">Select Total</a>
+                <div class="premium-glow-border"></div>
+              </div>
+            </div>
+
+            <div class="pricing-card pricing-card-premium" id="plan-care-enterprise">
+              <div class="pricing-card-inner">
+                <div class="pricing-header">
+                  <div class="pricing-badge pricing-badge-premium">ENTERPRISE</div>
+                  <h3 class="pricing-name">Enterprise Care</h3>
+                  <div class="pricing-price">
+                    <span class="price-currency">₹</span>
+                    <span class="price-amount">49,999</span>
+                  </div>
+                  <div class="price-period">/month</div>
+                </div>
+                <ul class="pricing-features">
+                  <li class="feature-item included"><span class="feature-check">✓</span> Enterprise website monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced security</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Advanced backup infrastructure</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Performance monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Database monitoring</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Priority maintenance</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Custom integrations maintenance</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> Dedicated technical manager</li>
+                  <li class="feature-item included"><span class="feature-check">✓</span> SLA-based priority support</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary btn-full">Contact NTOS</a>
+                <div class="premium-glow-border"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        
         <div class="inquiry-section history-section" id="history-section" style="display: none; margin-bottom: 40px;" data-reveal>
           <div class="inquiry-header">
             <div class="section-eyebrow">
@@ -892,37 +1131,53 @@
                     <span class="select-arrow" aria-hidden="true">↓</span>
                   </div>
                   <div class="custom-dropdown-menu" id="dropdown-menu">
-                    <div class="dropdown-group">Website &amp; Systems</div>
-                    <div class="dropdown-option" data-value="standard">NTOS Standard — ₹24,999</div>
-                    <div class="dropdown-option" data-value="growth">NTOS Growth — ₹44,999</div>
-                    <div class="dropdown-option" data-value="enterprise">NTOS Enterprise — ₹69,999</div>
-                    <div class="dropdown-option" data-value="web-custom">Custom Web Plan — Custom Pricing</div>
+                    <div class="dropdown-group">Website Development Packages</div>
+                    <div class="dropdown-option" data-value="web-starter">NTOS Starter — ₹20,000 / Project</div>
+                    <div class="dropdown-option" data-value="web-growth">NTOS Growth — ₹39,999 / Project</div>
+                    <div class="dropdown-option" data-value="web-pro">NTOS Professional — ₹69,999 / Project</div>
+                    <div class="dropdown-option" data-value="web-enterprise">NTOS Enterprise — ₹1,19,999 / Project</div>
+                    <div class="dropdown-option" data-value="web-custom">Custom Digital Solution — Custom</div>
                     
-                    <div class="dropdown-group">AI &amp; Automation (Monthly)</div>
-                    <div class="dropdown-option" data-value="ai-starter">AI Starter — ₹14,999 / Mo</div>
-                    <div class="dropdown-option" data-value="ai-growth">AI Growth — ₹29,999 / Mo</div>
-                    <div class="dropdown-option" data-value="ai-pro">AI Pro — ₹49,999 / Mo</div>
-                    <div class="dropdown-option" data-value="ai-custom">AI Custom / Enterprise — Custom</div>
+                    <div class="dropdown-group">AI Solutions Packages</div>
+                    <div class="dropdown-option" data-value="ai-starter">AI Starter — ₹19,999 / Mo</div>
+                    <div class="dropdown-option" data-value="ai-growth">AI Growth — ₹39,999 / Mo</div>
+                    <div class="dropdown-option" data-value="ai-pro">AI Pro — ₹69,999 / Mo</div>
+                    <div class="dropdown-option" data-value="ai-enterprise">AI Enterprise — ₹1,49,999 / Mo</div>
+                    <div class="dropdown-option" data-value="ai-custom">Custom AI Solution — Custom</div>
+
+                    <div class="dropdown-group">Automation Packages</div>
+                    <div class="dropdown-option" data-value="auto-starter">Automation Starter — ₹24,999 / Mo</div>
+                    <div class="dropdown-option" data-value="auto-growth">Automation Growth — ₹49,999 / Mo</div>
+                    <div class="dropdown-option" data-value="auto-pro">Automation Pro — ₹89,999 / Mo</div>
+                    <div class="dropdown-option" data-value="auto-enterprise">Automation Enterprise — ₹1,49,999 / Mo</div>
                     
-                    <div class="dropdown-group">Maintenance &amp; Care (Monthly)</div>
-                    <div class="dropdown-option" data-value="maint-basic">Basic Care — ₹4,999 / Mo</div>
-                    <div class="dropdown-option" data-value="maint-tech">Tech &amp; Bot Support — ₹9,999 / Mo</div>
-                    <div class="dropdown-option" data-value="maint-allinone">All-In-One Management — ₹19,999 / Mo</div>
+                    <div class="dropdown-group">Website Maintenance &amp; Support</div>
+                    <div class="dropdown-option" data-value="care">NTOS Care — ₹7,999 / Mo</div>
+                    <div class="dropdown-option" data-value="care-plus">NTOS Care Plus — ₹14,999 / Mo</div>
+                    <div class="dropdown-option" data-value="care-total">NTOS Total — ₹24,999 / Mo</div>
+                    <div class="dropdown-option" data-value="care-enterprise">Enterprise Care — ₹49,999 / Mo</div>
                   </div>
                   
                   <select id="package-select" name="package" style="display: none;" required aria-required="true" aria-describedby="package-select-error">
                     <option value="" disabled selected>Select a package</option>
-                    <option value="standard">NTOS Standard — ₹24,999</option>
-                    <option value="growth">NTOS Growth — ₹44,999</option>
-                    <option value="enterprise">NTOS Enterprise — ₹69,999</option>
-                    <option value="web-custom">Custom Web Plan — Custom Pricing</option>
-                    <option value="ai-starter">AI Starter — ₹14,999 / Mo</option>
-                    <option value="ai-growth">AI Growth — ₹29,999 / Mo</option>
-                    <option value="ai-pro">AI Pro — ₹49,999 / Mo</option>
-                    <option value="ai-custom">AI Custom / Enterprise — Custom</option>
-                    <option value="maint-basic">Basic Care — ₹4,999 / Mo</option>
-                    <option value="maint-tech">Tech &amp; Bot Support — ₹9,999 / Mo</option>
-                    <option value="maint-allinone">All-In-One Management — ₹19,999 / Mo</option>
+                    <option value="web-starter">NTOS Starter — ₹20,000 / Project</option>
+                    <option value="web-growth">NTOS Growth — ₹39,999 / Project</option>
+                    <option value="web-pro">NTOS Professional — ₹69,999 / Project</option>
+                    <option value="web-enterprise">NTOS Enterprise — ₹1,19,999 / Project</option>
+                    <option value="web-custom">Custom Digital Solution — Custom</option>
+                    <option value="ai-starter">AI Starter — ₹19,999 / Mo</option>
+                    <option value="ai-growth">AI Growth — ₹39,999 / Mo</option>
+                    <option value="ai-pro">AI Pro — ₹69,999 / Mo</option>
+                    <option value="ai-enterprise">AI Enterprise — ₹1,49,999 / Mo</option>
+                    <option value="ai-custom">Custom AI Solution — Custom</option>
+                    <option value="auto-starter">Automation Starter — ₹24,999 / Mo</option>
+                    <option value="auto-growth">Automation Growth — ₹49,999 / Mo</option>
+                    <option value="auto-pro">Automation Pro — ₹89,999 / Mo</option>
+                    <option value="auto-enterprise">Automation Enterprise — ₹1,49,999 / Mo</option>
+                    <option value="care">NTOS Care — ₹7,999 / Mo</option>
+                    <option value="care-plus">NTOS Care Plus — ₹14,999 / Mo</option>
+                    <option value="care-total">NTOS Total — ₹24,999 / Mo</option>
+                    <option value="care-enterprise">Enterprise Care — ₹49,999 / Mo</option>
                   </select>
                 </div>
                 <span class="form-error" id="package-select-error" role="alert" aria-live="polite"></span>
