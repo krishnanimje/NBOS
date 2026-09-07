@@ -10,15 +10,16 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Three.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <link rel="stylesheet" href="styles.css?v=28" />
   
   <!-- Supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -378,40 +379,71 @@
     </section>
 
     <!-- ============================================================
-         REFERENCE GALLERY
+         SELECTED PROJECTS PORTFOLIO
     ============================================================ -->
-    <section class="gallery" id="gallery" aria-labelledby="gallery-heading">
+    <section class="portfolio" id="portfolio" aria-labelledby="portfolio-heading">
       <div class="container">
         <div class="section-header" data-reveal>
           <div class="section-eyebrow">
             <span class="eyebrow-dot"></span>
-            <span>Portfolio</span>
+            <span>Selected Projects</span>
           </div>
-          <h2 class="section-title" id="gallery-heading">Reference Websites</h2>
+          <h2 class="section-title" id="portfolio-heading">Featured Digital Experiences</h2>
           <p class="section-body">
-            Explore our curated selection of high-end reference architectures and industry benchmarks.
+            Explore a selection of our recent premium web platforms, e-commerce stores, and digital solutions delivered for top-tier brands.
           </p>
         </div>
 
-        <div class="gallery-grid" data-reveal>
-          <div class="gallery-item">
-            <div class="gallery-img-placeholder">
-              <span>Image 1 (Insert Reference Here)</span>
+        <div class="portfolio-grid" data-reveal>
+          <!-- Project 1: RasoiRaj -->
+          <div class="portfolio-card premium-glow-border">
+            <div class="portfolio-img-wrap">
+              <img src="images/project1.png" alt="RasoiRaj Website" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <div class="portfolio-meta">Restaurant &amp; Café</div>
+              <h3 class="portfolio-title">RasoiRaj</h3>
+              <p class="portfolio-desc">A beautiful, functional website for restaurants and food brands. Showcase your menu, take online orders, and bring your flavors online.</p>
+              <a href="#" class="btn btn-outline portfolio-cta">Explore Project <span aria-hidden="true">→</span></a>
             </div>
           </div>
-          <div class="gallery-item">
-            <div class="gallery-img-placeholder">
-              <span>Image 2 (Insert Reference Here)</span>
+
+          <!-- Project 2: Nirvaan Estates -->
+          <div class="portfolio-card premium-glow-border">
+            <div class="portfolio-img-wrap">
+              <img src="images/project2.png" alt="Nirvaan Estates Website" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <div class="portfolio-meta">Real Estate</div>
+              <h3 class="portfolio-title">Nirvaan Estates</h3>
+              <p class="portfolio-desc">Explore premium residential properties. Find your dream home, compare options, view details, and connect with experts online.</p>
+              <a href="#" class="btn btn-outline portfolio-cta">Explore Project <span aria-hidden="true">→</span></a>
             </div>
           </div>
-          <div class="gallery-item">
-            <div class="gallery-img-placeholder">
-              <span>Image 3 (Insert Reference Here)</span>
+
+          <!-- Project 3: StyleNest -->
+          <div class="portfolio-card premium-glow-border">
+            <div class="portfolio-img-wrap">
+              <img src="images/project3.jpg" alt="StyleNest Website" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <div class="portfolio-meta">Fashion E-Commerce</div>
+              <h3 class="portfolio-title">StyleNest</h3>
+              <p class="portfolio-desc">Discover the latest trends in fashion and lifestyle. Shop from a curated collection of clothing and footwear in one beautiful premium store.</p>
+              <a href="#" class="btn btn-outline portfolio-cta">Explore Project <span aria-hidden="true">→</span></a>
             </div>
           </div>
-          <div class="gallery-item">
-            <div class="gallery-img-placeholder">
-              <span>Image 4 (Insert Reference Here)</span>
+
+          <!-- Project 4: CARELY -->
+          <div class="portfolio-card premium-glow-border">
+            <div class="portfolio-img-wrap">
+              <img src="images/project4.jpg" alt="CARELY Website" loading="lazy">
+            </div>
+            <div class="portfolio-content">
+              <div class="portfolio-meta">Healthcare &amp; Clinic</div>
+              <h3 class="portfolio-title">CARELY</h3>
+              <p class="portfolio-desc">A modern healthcare website designed for clinics and hospitals with doctor profiles, online appointment booking, and patient enquiry.</p>
+              <a href="#" class="btn btn-outline portfolio-cta">Explore Project <span aria-hidden="true">→</span></a>
             </div>
           </div>
         </div>
@@ -1563,6 +1595,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=28"></script>
+  <script defer src="app.js?v=28"></script>
 </body>
 </html>
