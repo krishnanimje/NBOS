@@ -138,7 +138,15 @@
         0.1,
         50
       );
-      camera.position.z = 2.95;
+
+      // Responsive Camera Distance
+      function updateCameraZ(width) {
+        if (width <= 480) return 6.0;  // Substantially smaller for mobile
+        if (width <= 768) return 5.0;  // Moderately smaller for large mobile
+        if (width <= 1024) return 3.8; // Reduced for tablet
+        return 2.95; // Desktop
+      }
+      camera.position.z = updateCameraZ(window.innerWidth);
 
       // Helper: Generate soft glowing dot texture for node vertices
       function createDotTexture() {
@@ -321,6 +329,9 @@
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
         renderer.setSize(w, h, false);
+        
+        // Update camera position to ensure responsive scaling on resize
+        camera.position.z = updateCameraZ(window.innerWidth);
       });
       resizeObserver.observe(wrap);
 
