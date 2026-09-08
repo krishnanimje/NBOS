@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Page not found on NTOS. The page you are looking for might have been removed, had its name changed, or is temporarily unavailable." />
+  <title>404 Not Found — NTOS</title>
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css?v=28" />
+  <style>
+    .not-found-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .not-found-eyebrow {
+      color: var(--accent);
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .not-found-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+    .not-found-desc {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GLOBAL NAVIGATION -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="navbar-inner container">
+      <a href="index.html" class="navbar-brand" aria-label="NTOS Home">
+        <span class="brand-name">NTOS</span>
+        <span class="brand-sub">A Nimje Group Venture</span>
+      </a>
+
+      <nav class="navbar-nav" aria-label="Primary navigation">
+        <a href="index.html#showcase" class="nav-link">Services</a>
+        <a href="index.html#pricing" class="nav-link">Pricing</a>
+        <a href="contact-us.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="navbar-actions">
+        <a href="index.html#pricing" class="btn btn-primary btn-sm" id="nav-cta">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <nav>
+        <a href="index.html#showcase" class="mobile-nav-link">Services</a>
+        <a href="index.html#pricing" class="mobile-nav-link">Pricing</a>
+        <a href="contact-us.html" class="mobile-nav-link">Contact</a>
+        <a href="index.html#pricing" class="btn btn-primary mobile-cta">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="not-found-section">
+      <div class="not-found-eyebrow">Error 404</div>
+      <h1 class="not-found-title">Page Not Found</h1>
+      <p class="not-found-desc">The digital asset you're looking for does not exist in our infrastructure. It might have been moved or deleted.</p>
+      <a href="index.html" class="btn btn-primary btn-lg">Back to Home <span class="btn-arrow" aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

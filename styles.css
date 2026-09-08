@@ -58,6 +58,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -74,6 +76,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -364,7 +367,7 @@ h1, h2, h3, h4, h5, h6 {
   top: var(--nav-height);
   left: 0;
   right: 0;
-  bottom: 0;
+  height: calc(100dvh - var(--nav-height));
   background: rgba(9, 9, 11, 0.98);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -2259,6 +2262,17 @@ h1, h2, h3, h4, h5, h6 {
   .hero-actions .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .hero-canvas-wrap {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: -40px;
+    opacity: 0.6;
+    transform: scale(0.8);
+    transform-origin: center;
   }
 
   .stats-grid {

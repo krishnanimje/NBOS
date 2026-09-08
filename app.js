@@ -575,15 +575,21 @@
     }
 
     // Save to local NTOS folder via custom backend server
+    let fetchSuccess = false;
     try {
-      await fetch('/api/inquiry', {
+      const response = await fetch('/api/inquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
       });
-      console.log('[NTOS] Form saved to local NTOS folder successfully.');
+      if (response.ok) {
+        console.log('[NTOS] Form saved to local NTOS folder successfully.');
+        fetchSuccess = true;
+      } else {
+        throw new Error('API returned ' + response.status);
+      }
     } catch (err) {
       console.warn('[NTOS] Failed to save to local server (is server.js running?)', err);
     }
@@ -591,6 +597,15 @@
     setTimeout(() => {
       if (submitBtn) submitBtn.disabled = false;
       if (btnLabel) btnLabel.textContent = 'Submit Inquiry';
+
+      // If backend fetch failed, display an error message
+      if (!fetchSuccess) {
+        if (errorMsg) {
+          errorMsg.textContent = 'Failed to submit inquiry due to network error. Please try again later or contact us directly.';
+          errorMsg.hidden = false;
+        }
+        return; // Halt success flow
+      }
 
       if (successMsg) successMsg.hidden = false;
       form.reset();
