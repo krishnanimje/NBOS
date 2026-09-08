@@ -535,6 +535,18 @@
     if (submitBtn) submitBtn.disabled = true;
     if (btnLabel) btnLabel.textContent = 'Submitting…';
 
+    let selectedPackagePrice = '';
+    const packageSelect = fields.packageSelect;
+    if (packageSelect && packageSelect.selectedIndex >= 0) {
+      const optionText = packageSelect.options[packageSelect.selectedIndex].text;
+      const parts = optionText.split('—');
+      if (parts.length > 1) {
+        selectedPackagePrice = parts[1].trim();
+      } else if (optionText && optionText.toLowerCase().includes('custom')) {
+        selectedPackagePrice = 'Custom';
+      }
+    }
+
     const formData = {
       owner_name:          fields.ownerName?.value?.trim(),
       business_name:       fields.businessName?.value?.trim(),
@@ -542,6 +554,7 @@
       email_address:       fields.emailAddr?.value?.trim(),
       whatsapp_number:     fields.whatsappNum?.value?.trim(),
       package:             fields.packageSelect?.value,
+      price:               selectedPackagePrice,
       special_requirement: document.getElementById('special-requirement')?.value?.trim() || '',
       submitted_at:        new Date().toISOString()
     };
@@ -638,7 +651,7 @@ window.downloadNTOSLeads = function() {
     alert('Abhi tak koi inquiry receive nahi hui hai.');
     return;
   }
-  const headers = ['Submitted At', 'Owner Name', 'Business Name', 'Mobile Number', 'Email ID', 'WhatsApp Number', 'Package', 'Special Requirement'];
+  const headers = ['Submitted At', 'Owner Name', 'Business Name', 'Mobile Number', 'Email ID', 'WhatsApp Number', 'Package', 'Price', 'Special Requirement'];
   const rows = leads.map(l => [
     `"${l.submitted_at || ''}"`,
     `"${l.owner_name || ''}"`,
@@ -647,6 +660,7 @@ window.downloadNTOSLeads = function() {
     `"${l.email_address || ''}"`,
     `"${l.whatsapp_number || ''}"`,
     `"${l.package || ''}"`,
+    `"${l.price || ''}"`,
     `"${(l.special_requirement || '').replace(/"/g, '""')}"`
   ]);
   const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
