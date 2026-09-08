@@ -1,7 +1,7 @@
 {
   "name": "ntos",
   "version": "1.0.0",
-  "description": "NBOS — A Nimje Group Venture",
+  "description": "NTOS — A Nimje Group Venture",
   "main": "index.html",
   "scripts": {
     "start": "node server.js"

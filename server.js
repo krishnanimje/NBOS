@@ -14,9 +14,9 @@ const MIME_TYPES = {
   '.ico': 'image/x-icon'
 };
 
-const NBOS_DIR = path.join(__dirname, 'NBOS');
-if (!fs.existsSync(NBOS_DIR)) {
-  fs.mkdirSync(NBOS_DIR, { recursive: true });
+const NTOS_DIR = path.join(__dirname, 'NTOS');
+if (!fs.existsSync(NTOS_DIR)) {
+  fs.mkdirSync(NTOS_DIR, { recursive: true });
 }
 
 const server = http.createServer((req, res) => {
@@ -28,7 +28,7 @@ const server = http.createServer((req, res) => {
     req.on('end', () => {
       try {
         const data = JSON.parse(body);
-        const filePath = path.join(NBOS_DIR, 'inquiries.json');
+        const filePath = path.join(NTOS_DIR, 'inquiries.json');
         
         let inquiries = [];
         if (fs.existsSync(filePath)) {
