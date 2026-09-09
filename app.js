@@ -574,39 +574,33 @@
       console.warn('[NTOS] Local storage save failed', e);
     }
 
-    // Save to local NTOS folder via custom backend server
-    let fetchSuccess = false;
+    // Save to local NTOS folder via custom backend server if available
     try {
-      const response = await fetch('/api/inquiry', {
+      fetch('/api/inquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
+      }).then(res => {
+        if (res.ok) {
+          console.log('[NTOS] Form saved to local NTOS folder successfully.');
+        }
+      }).catch(err => {
+        console.warn('[NTOS] Local server not active; lead preserved in browser & cloud.', err);
       });
-      if (response.ok) {
-        console.log('[NTOS] Form saved to local NTOS folder successfully.');
-        fetchSuccess = true;
-      } else {
-        throw new Error('API returned ' + response.status);
-      }
     } catch (err) {
-      console.warn('[NTOS] Failed to save to local server (is server.js running?)', err);
+      console.warn('[NTOS] Local fetch dispatch error', err);
     }
 
     setTimeout(() => {
       if (submitBtn) submitBtn.disabled = false;
       if (btnLabel) btnLabel.textContent = 'Submit Inquiry';
 
-      // If backend fetch failed, display an error message
-      if (!fetchSuccess) {
-        if (errorMsg) {
-          errorMsg.textContent = 'Failed to submit inquiry due to network error. Please try again later or contact us directly.';
-          errorMsg.hidden = false;
-        }
-        return; // Halt success flow
+      if (errorMsg) {
+        errorMsg.hidden = true;
+        errorMsg.textContent = '';
       }
-
       if (successMsg) successMsg.hidden = false;
       form.reset();
 
@@ -692,256 +686,30 @@ window.downloadNTOSLeads = function() {
 })();
 
 /* ============================================================
-   6. PRICING — PLAN DETAILS POPUP MODAL & INQUIRY SYNC
+   6. PRICING — PACKAGE SELECTION & SMOOTH SCROLL TO INQUIRY
 ============================================================ */
-(function initPricingModal() {
-  const modal            = document.getElementById('plan-modal');
-  const backdrop         = document.getElementById('modal-backdrop');
-  const closeBtn         = document.getElementById('modal-close-btn');
-  const cancelBtn        = document.getElementById('modal-cancel-btn');
-  const proceedBtn       = document.getElementById('modal-proceed-btn');
-
-  const modalBadge       = document.getElementById('modal-plan-badge');
-  const modalTitle       = document.getElementById('modal-plan-title');
-  const modalPrice       = document.getElementById('modal-plan-price');
-  const modalCaption     = document.getElementById('modal-plan-caption');
-  const modalFeatureList = document.getElementById('modal-feature-list');
-
-  const packageSelect    = document.getElementById('package-select');
-
-  let activePlanKey = '';
-
-  const plansData = {
-    standard: {
-      badge: 'Standard Package',
-      title: 'NTOS Standard',
-      price: '₹29,999',
-      caption: 'Essential online presence for small businesses & startups on a budget.',
-      features: [
-        { text: 'Basic Multi-Page / Landing Page Website', included: true },
-        { text: 'No-Code / Template-Based Architecture', included: true },
-        { text: 'Standard UI/UX Layout', included: true },
-        { text: 'Mobile & Tablet Responsive Implementation', included: true },
-        { text: 'Standard Deployment & Hosting Setup', included: true },
-        { text: '7-Day Post-Launch Support', included: true },
-        { text: 'Custom UI/UX Engineering', included: false },
-        { text: 'Custom Web Application Dev', included: false },
-        { text: '3D / WebGL Integration', included: false },
-        { text: 'AI Chatbot & BI Dashboard', included: false }
-      ]
-    },
-    growth: {
-      badge: '🔥 MOST SELLING — Growth Package',
-      title: 'NTOS Growth',
-      price: '₹44,999',
-      caption: 'Full-featured custom web applications for scaling companies.',
-      features: [
-        { text: 'Fully Detailed Custom Website & Web Application', included: true },
-        { text: 'Custom UI/UX Engineering & High-End Prototyping', included: true },
-        { text: '5 AI-Powered Marketing Posters', included: true },
-        { text: 'Mobile & Tablet Responsive Implementation', included: true },
-        { text: 'Secure Cloud Deployment & Hosting Setup', included: true },
-        { text: '14-Day Post-Launch Support', included: true },
-        { text: '3D / WebGL Integration', included: false },
-        { text: 'AI Chatbot & BI Dashboard', included: false },
-        { text: 'Google Ads & Meta Ads', included: false }
-      ]
-    },
-    enterprise: {
-      badge: 'Enterprise Ecosystem',
-      title: 'NTOS Enterprise',
-      price: '₹74,999',
-      caption: 'Fully automated enterprise systems, 3D WebGL, AI Chatbot & BI Dashboards for industry leaders.',
-      features: [
-        { text: 'Everything in Standard & Growth', included: true },
-        { text: 'Full E-Commerce & Online Store Engine', included: true },
-        { text: '3D / WebGL Interactive Experience', included: true },
-        { text: 'AI Chatbot Integration', included: true },
-        { text: 'Detailed Business Intelligence (BI) Dashboard', included: true },
-        { text: 'Google Ads Campaign Management', included: true },
-        { text: 'Meta Ads Campaign Management', included: true },
-        { text: 'Priority Deployment (72-Hour Delivery Target)', included: true },
-        { text: '30-Day Post-Launch Support', included: true },
-        { text: 'Dedicated Project Architect', included: true }
-      ]
-    },
-    'web-custom': {
-      badge: 'Custom Web Plan',
-      title: 'NTOS Custom',
-      price: 'Custom Pricing',
-      caption: 'Tailored web solutions, specialized portals, and bespoke architectures.',
-      features: [
-        { text: 'Fully Bespoke UI/UX Design', included: true },
-        { text: 'Complex Web Application Features', included: true },
-        { text: 'Custom Integrations (API, ERP, CRM)', included: true },
-        { text: 'Dedicated Project Manager & Dev Team', included: true }
-      ]
-    },
-    'ai-starter': {
-      badge: 'AI Starter Package',
-      title: 'AI Starter',
-      price: '₹19,999 / Mo',
-      caption: 'Ideal for businesses initiating online marketing & automated responses.',
-      features: [
-        { text: 'Basic WhatsApp & Insta Automation (Welcome & FAQ Bot)', included: true },
-        { text: '8 AI Social Media Posters / Month', included: true },
-        { text: '2 AI UGC Videos (Reels & Shorts)', included: true },
-        { text: '1 Basic Email Automation Sequence', included: true },
-        { text: 'Standard Technical Support', included: true }
-      ]
-    },
-    'ai-growth': {
-      badge: '🔥 MOST POPULAR — AI Growth',
-      title: 'AI Growth',
-      price: '₹29,999 / Mo',
-      caption: 'For growing businesses needing qualified leads, ad campaigns & sales.',
-      features: [
-        { text: 'Advanced WhatsApp & Insta Chatbot (Lead Gen)', included: true },
-        { text: '1 Ad Campaign Setup & Management (FB/Insta)', included: true },
-        { text: '15 Custom AI Posters / Month', included: true },
-        { text: '4 High-Quality AI UGC Videos', included: true },
-        { text: 'Advanced Email Marketing (Cart & Newsletter)', included: true },
-        { text: 'Monthly Performance & ROI Report', included: true }
-      ]
-    },
-    'ai-pro': {
-      badge: 'AI Pro Package',
-      title: 'AI Pro',
-      price: '₹54,999 / Mo',
-      caption: 'Full-scale multi-channel marketing & CRM integration for brands.',
-      features: [
-        { text: 'Multi-Channel Automation (WhatsApp + Insta + Email)', included: true },
-        { text: '2-3 Paid Ad Campaigns (with A/B Testing)', included: true },
-        { text: '30 AI Posters / Month (Daily Posting)', included: true },
-        { text: '8 to 10 AI UGC Videos (Viral Hooks)', included: true },
-        { text: 'Direct CRM Integration (Instant Lead Sync)', included: true }
-      ]
-    },
-    'ai-custom': {
-      badge: 'AI Enterprise & Custom',
-      title: 'AI Custom',
-      price: 'Custom Pricing',
-      caption: 'Tailored AI models, dedicated workflows & enterprise scale.',
-      features: [
-        { text: 'Fully Customized AI & Automation Architecture', included: true },
-        { text: 'Unlimited Graphic Designs & Video Production', included: true },
-        { text: 'Dedicated AI Automation Specialist', included: true },
-        { text: '24/7 SLA Priority Infrastructure', included: true }
-      ]
-    },
-    'maint-basic': {
-      badge: 'Website Care',
-      title: 'Basic Care',
-      price: '₹9,999 / Mo',
-      caption: 'Website maintenance, hosting management & monthly backups.',
-      features: [
-        { text: 'Website Hosting & Domain Management', included: true },
-        { text: 'Monthly Website & Database Backups', included: true },
-        { text: 'Software & Core Plugin Updates', included: true },
-        { text: 'Bug Fixing & Uptime Monitoring', included: true },
-        { text: '1-2 Small Content/Image Edits / Month', included: true }
-      ]
-    },
-    'maint-tech': {
-      badge: '🔥 MOST SELLING — Tech & Bot Care',
-      title: 'Tech & Bot Support',
-      price: '₹14,999 / Mo',
-      caption: 'Full website care + WhatsApp & Insta bot uptime monitoring.',
-      features: [
-        { text: 'All Basic Care Features Included', included: true },
-        { text: 'WhatsApp & Insta Bot Active Uptime Monitoring', included: true },
-        { text: '1-2 Monthly Automation Flow Updates (Reply Edits)', included: true },
-        { text: 'Weekly Database Backups', included: true },
-        { text: 'Priority Technical Support', included: true }
-      ]
-    },
-    'maint-allinone': {
-      badge: 'All-In-One Ecosystem',
-      title: 'All-In-One Management',
-      price: '₹24,999 / Mo',
-      caption: '24/7 total system management, speed optimization & dedicated manager.',
-      features: [
-        { text: 'Daily Website Backup & Advanced Security', included: true },
-        { text: 'Unlimited Small Automation & Campaign Updates', included: true },
-        { text: 'Adding New Services / Products to Website', included: true },
-        { text: 'Server Speed & Database Optimization', included: true },
-        { text: '24/7 Instant Support & Dedicated Manager', included: true }
-      ]
-    }
-  };
-
-  function openModal(planKey) {
-    const data = plansData[planKey];
-    if (!data || !modal) return;
-
-    activePlanKey = planKey;
-
-    if (modalBadge) modalBadge.textContent = data.badge;
-    if (modalTitle) modalTitle.textContent = data.title;
-    if (modalPrice) modalPrice.textContent = data.price;
-    if (modalCaption) modalCaption.textContent = data.caption;
-
-    if (modalFeatureList) {
-      modalFeatureList.innerHTML = data.features.map(f => `
-        <li class="modal-feature-item ${f.included ? 'included' : 'excluded'}">
-          <span class="${f.included ? 'modal-check' : 'modal-x'}">${f.included ? '✓' : '–'}</span>
-          <span>${f.text}</span>
-        </li>
-      `).join('');
-    }
-
-    modal.classList.add('active');
-    modal.removeAttribute('aria-hidden');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    if (!modal) return;
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  function proceedToInquiry() {
-    closeModal();
-    if (packageSelect && activePlanKey) {
-      packageSelect.value = activePlanKey;
-    }
-    const form = document.getElementById('inquiry-form');
-    if (form) {
-      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setTimeout(() => {
-        document.getElementById('owner-name')?.focus();
-      }, 600);
-    }
-  }
+(function initPricingSelection() {
+  const packageSelect = document.getElementById('package-select');
 
   document.querySelectorAll('.pricing-card .btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.preventDefault();
       const card = btn.closest('.pricing-card');
       const planKey = card?.id?.replace('plan-', '') || '';
 
-      if (planKey && plansData[planKey]) {
-        openModal(planKey);
-      } else {
-        const label = btn.getAttribute('aria-label') || '';
-        if (label.includes('Standard')) openModal('standard');
-        else if (label.includes('Growth')) openModal('growth');
-        else if (label.includes('Enterprise') || label.includes('Custom')) openModal('enterprise');
+      if (planKey && packageSelect) {
+        packageSelect.value = planKey;
+        packageSelect.dispatchEvent(new Event('change'));
+      }
+
+      const form = document.getElementById('inquiry-form') || document.getElementById('contact');
+      if (form) {
+        e.preventDefault();
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => {
+          document.getElementById('owner-name')?.focus();
+        }, 500);
       }
     });
-  });
-
-  closeBtn?.addEventListener('click', closeModal);
-  cancelBtn?.addEventListener('click', closeModal);
-  backdrop?.addEventListener('click', closeModal);
-  proceedBtn?.addEventListener('click', proceedToInquiry);
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal?.classList.contains('active')) {
-      closeModal();
-    }
   });
 })();
 
