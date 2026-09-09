@@ -535,18 +535,6 @@
     if (submitBtn) submitBtn.disabled = true;
     if (btnLabel) btnLabel.textContent = 'Submitting…';
 
-    let selectedPackagePrice = '';
-    const packageSelect = fields.packageSelect;
-    if (packageSelect && packageSelect.selectedIndex >= 0) {
-      const optionText = packageSelect.options[packageSelect.selectedIndex].text;
-      const parts = optionText.split('—');
-      if (parts.length > 1) {
-        selectedPackagePrice = parts[1].trim();
-      } else if (optionText && optionText.toLowerCase().includes('custom')) {
-        selectedPackagePrice = 'Custom';
-      }
-    }
-
     const formData = {
       owner_name:          fields.ownerName?.value?.trim(),
       business_name:       fields.businessName?.value?.trim(),
@@ -554,7 +542,6 @@
       email_address:       fields.emailAddr?.value?.trim(),
       whatsapp_number:     fields.whatsappNum?.value?.trim(),
       package:             fields.packageSelect?.value,
-      price:               selectedPackagePrice,
       special_requirement: document.getElementById('special-requirement')?.value?.trim() || '',
       submitted_at:        new Date().toISOString()
     };
@@ -651,7 +638,7 @@ window.downloadNTOSLeads = function() {
     alert('Abhi tak koi inquiry receive nahi hui hai.');
     return;
   }
-  const headers = ['Submitted At', 'Owner Name', 'Business Name', 'Mobile Number', 'Email ID', 'WhatsApp Number', 'Package', 'Price', 'Special Requirement'];
+  const headers = ['Submitted At', 'Owner Name', 'Business Name', 'Mobile Number', 'Email ID', 'WhatsApp Number', 'Package', 'Special Requirement'];
   const rows = leads.map(l => [
     `"${l.submitted_at || ''}"`,
     `"${l.owner_name || ''}"`,
@@ -660,7 +647,6 @@ window.downloadNTOSLeads = function() {
     `"${l.email_address || ''}"`,
     `"${l.whatsapp_number || ''}"`,
     `"${l.package || ''}"`,
-    `"${l.price || ''}"`,
     `"${(l.special_requirement || '').replace(/"/g, '""')}"`
   ]);
   const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
@@ -729,7 +715,7 @@ window.downloadNTOSLeads = function() {
     standard: {
       badge: 'Standard Package',
       title: 'NTOS Standard',
-      price: '₹24,999',
+      price: '₹29,999',
       caption: 'Essential online presence for small businesses & startups on a budget.',
       features: [
         { text: 'Basic Multi-Page / Landing Page Website', included: true },
@@ -764,7 +750,7 @@ window.downloadNTOSLeads = function() {
     enterprise: {
       badge: 'Enterprise Ecosystem',
       title: 'NTOS Enterprise',
-      price: '₹69,999',
+      price: '₹74,999',
       caption: 'Fully automated enterprise systems, 3D WebGL, AI Chatbot & BI Dashboards for industry leaders.',
       features: [
         { text: 'Everything in Standard & Growth', included: true },
@@ -794,7 +780,7 @@ window.downloadNTOSLeads = function() {
     'ai-starter': {
       badge: 'AI Starter Package',
       title: 'AI Starter',
-      price: '₹14,999 / Mo',
+      price: '₹19,999 / Mo',
       caption: 'Ideal for businesses initiating online marketing & automated responses.',
       features: [
         { text: 'Basic WhatsApp & Insta Automation (Welcome & FAQ Bot)', included: true },
@@ -821,7 +807,7 @@ window.downloadNTOSLeads = function() {
     'ai-pro': {
       badge: 'AI Pro Package',
       title: 'AI Pro',
-      price: '₹49,999 / Mo',
+      price: '₹54,999 / Mo',
       caption: 'Full-scale multi-channel marketing & CRM integration for brands.',
       features: [
         { text: 'Multi-Channel Automation (WhatsApp + Insta + Email)', included: true },
@@ -846,7 +832,7 @@ window.downloadNTOSLeads = function() {
     'maint-basic': {
       badge: 'Website Care',
       title: 'Basic Care',
-      price: '₹4,999 / Mo',
+      price: '₹9,999 / Mo',
       caption: 'Website maintenance, hosting management & monthly backups.',
       features: [
         { text: 'Website Hosting & Domain Management', included: true },
@@ -859,7 +845,7 @@ window.downloadNTOSLeads = function() {
     'maint-tech': {
       badge: '🔥 MOST SELLING — Tech & Bot Care',
       title: 'Tech & Bot Support',
-      price: '₹9,999 / Mo',
+      price: '₹14,999 / Mo',
       caption: 'Full website care + WhatsApp & Insta bot uptime monitoring.',
       features: [
         { text: 'All Basic Care Features Included', included: true },
@@ -872,7 +858,7 @@ window.downloadNTOSLeads = function() {
     'maint-allinone': {
       badge: 'All-In-One Ecosystem',
       title: 'All-In-One Management',
-      price: '₹19,999 / Mo',
+      price: '₹24,999 / Mo',
       caption: '24/7 total system management, speed optimization & dedicated manager.',
       features: [
         { text: 'Daily Website Backup & Advanced Security', included: true },
