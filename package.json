@@ -1,9 +1,8 @@
 {
-  "name": "ntos",
+  "name": "nbos",
   "version": "1.0.0",
-  "description": "NTOS — A Nimje Group Venture",
-  "main": "index.html",
+  "description": "NBOS — Business Operating System",
   "scripts": {
-    "start": "node server.js"
+    "build": "echo 'Static build complete'"
   }
 }
