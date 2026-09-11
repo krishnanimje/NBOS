@@ -574,24 +574,7 @@
       console.warn('[NTOS] Local storage save failed', e);
     }
 
-    // Save to local NTOS folder via custom backend server if available
-    try {
-      fetch('/api/inquiry', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      }).then(res => {
-        if (res.ok) {
-          console.log('[NTOS] Form saved to local NTOS folder successfully.');
-        }
-      }).catch(err => {
-        console.warn('[NTOS] Local server not active; lead preserved in browser & cloud.', err);
-      });
-    } catch (err) {
-      console.warn('[NTOS] Local fetch dispatch error', err);
-    }
+    // Local backend removed to prevent 404 errors on Vercel
 
     setTimeout(() => {
       if (submitBtn) submitBtn.disabled = false;
