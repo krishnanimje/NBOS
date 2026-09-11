@@ -53,14 +53,24 @@ const server = http.createServer((req, res) => {
 
   let reqPath = req.url.split('?')[0];
   let filePath = path.join(__dirname, reqPath === '/' ? 'index.html' : reqPath);
-  const extname = String(path.extname(filePath)).toLowerCase();
+  let extname = String(path.extname(filePath)).toLowerCase();
+  
+  if (!extname && !filePath.endsWith('\\') && !filePath.endsWith('/')) {
+    filePath += '.html';
+    extname = '.html';
+  }
+
   const contentType = MIME_TYPES[extname] || 'application/octet-stream';
 
   fs.readFile(filePath, (error, content) => {
     if (error) {
       if (error.code === 'ENOENT') {
-        res.writeHead(404, { 'Content-Type': 'text/html' });
-        res.end('<h1>404 Not Found</h1>', 'utf-8');
+        // Fallback to 404.html if it exists
+        const notFoundPath = path.join(__dirname, '404.html');
+        fs.readFile(notFoundPath, (err404, content404) => {
+          res.writeHead(404, { 'Content-Type': 'text/html' });
+          res.end(err404 ? '<h1>404 Not Found</h1>' : content404, 'utf-8');
+        });
       } else {
         res.writeHead(500);
         res.end(`Server Error: ${error.code}`, 'utf-8');
