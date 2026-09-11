@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ntos.studio/sitemap.xml
+Sitemap: https://vercel.app/sitemap.xml
