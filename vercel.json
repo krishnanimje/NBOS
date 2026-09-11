@@ -1,4 +1,10 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/contact", "destination": "/contact-us.html" },
+    { "source": "/privacy", "destination": "/privacy-policy.html" },
+    { "source": "/terms", "destination": "/terms-conditions.html" },
+    { "source": "/refund", "destination": "/refund-policy.html" }
+  ]
 }
