@@ -1,0 +1,82 @@
+[
+  {
+    "owner_name": "RR",
+    "business_name": "RR",
+    "call_number": "1234567890",
+    "email_address": "krishnanimje@gmail.com",
+    "whatsapp_number": "1234567890",
+    "package": "web-custom",
+    "special_requirement": "",
+    "submitted_at": "2026-08-14T08:08:21.872Z"
+  },
+  {
+    "owner_name": "rr",
+    "business_name": "kk",
+    "call_number": "2211334499",
+    "email_address": "krishnanimje221@gmail.com",
+    "whatsapp_number": "1234567890",
+    "package": "standard",
+    "special_requirement": "",
+    "submitted_at": "2026-08-14T09:31:53.891Z"
+  },
+  {
+    "owner_name": "rr",
+    "business_name": "kk",
+    "call_number": "1234567890",
+    "email_address": "krishnanimje221@gmail.com",
+    "whatsapp_number": "1234567890",
+    "package": "maint-tech",
+    "special_requirement": "",
+    "submitted_at": "2026-08-14T09:48:49.423Z"
+  },
+  {
+    "owner_name": "kk",
+    "business_name": "kr",
+    "call_number": "1234567890",
+    "email_address": "krishnanimje221@gmail.com",
+    "whatsapp_number": "0987654321",
+    "package": "growth",
+    "special_requirement": "",
+    "submitted_at": "2026-08-14T09:51:12.462Z"
+  },
+  {
+    "owner_name": "kk",
+    "business_name": "kk",
+    "call_number": "1234567890",
+    "email_address": "krishnanimje221@gmail.com",
+    "whatsapp_number": "0987654321",
+    "package": "maint-tech",
+    "special_requirement": "",
+    "submitted_at": "2026-08-14T09:53:57.138Z"
+  },
+  {
+    "owner_name": "kk",
+    "business_name": "kk",
+    "call_number": "1234567890",
+    "email_address": "krishnanimje221@gmail.com",
+    "whatsapp_number": "1234567890",
+    "package": "ai-custom",
+    "special_requirement": "",
+    "submitted_at": "2026-08-14T09:55:36.960Z"
+  },
+  {
+    "owner_name": "rr",
+    "business_name": "rt",
+    "call_number": "2211334499",
+    "email_address": "krishnanimje221@gmail.com",
+    "whatsapp_number": "0987654321",
+    "package": "maint-allinone",
+    "special_requirement": "",
+    "submitted_at": "2026-08-14T09:58:01.398Z"
+  },
+  {
+    "owner_name": "kk",
+    "business_name": "kk",
+    "call_number": "2211334499",
+    "email_address": "krishnanimje221@gmail.com",
+    "whatsapp_number": "1234567890",
+    "package": "web-custom",
+    "special_requirement": "",
+    "submitted_at": "2026-08-14T10:04:09.458Z"
+  }
+]
